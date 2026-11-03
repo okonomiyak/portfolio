@@ -1,5 +1,6 @@
 mod views;
 mod components;
+mod data;
 
 use components::Navbar;
 use dioxus::prelude::*;

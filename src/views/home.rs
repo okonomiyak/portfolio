@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 
 use crate::components::Footer;
+use crate::components::Works;
 
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 
@@ -28,15 +29,17 @@ pub fn Home() -> Element {
                 div {
                     id:"Shome",
                     h1 { "色々使える"}
-                    p {"Rust: このサイト、Discordボット"}
-                    p {"Java: Minecraft の Mod・アドオン"}
-                    p {"Unity (C#): ブラウザで遊べるレースゲーム"}
-                    p {"Linux / Proxmox: 自宅サーバーの運用"}
-                    p {"ESP32 / Arduino: ディスプレイ "}
-                    p {"ROS2: ロボットの制御" }
+                    Works {  } 
+                    // p {"Rust: このサイト、Discordボット"}
+                    // p {"Java: Minecraft の Mod・アドオン"}
+                    // p {"Unity (C#): ブラウザで遊べるレースゲーム"}
+                    // p {"Linux / Proxmox: 自宅サーバーの運用"}
+                    // p {"ESP32 / Arduino: ディスプレイ "}
+                    // p {"ROS2: ロボットの制御" }
                 }
             }
         }
+        
         Footer {}
     }
 }

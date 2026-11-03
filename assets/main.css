@@ -66,12 +66,36 @@
   color: #CCCCCC;
   font-size: 2rem;
 }
+.home #Shome button {
+  color: #FFFFFF;
+}
 
 #footer {
   margin-top: 30px;
   padding: 20px;
   text-align: center;
   background-color: #F5F5F7;
+}
+
+#works .buttons {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+  background-color: rgba(100, 97, 97, 0.5019607843);
+  padding: 5px;
+  border-radius: 20px;
+  line-height: 1;
+}
+#works .buttons button {
+  background: none;
+  border: none;
+  padding: 0 3px;
+  font: inherit;
+  font-size: 0.5rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
 html, body {
