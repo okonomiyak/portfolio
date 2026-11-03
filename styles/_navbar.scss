@@ -1,0 +1,29 @@
+@use "variables" as *;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: larger;
+  padding: 10px;
+  border-bottom: 2px solid $border;
+  background-color: $navbarbg;
+  font-family: $font-English;
+  padding-left: 20%;
+
+  a {
+    color: $text;
+    text-decoration: none;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+    padding-right: 30%;
+  }
+}

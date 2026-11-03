@@ -28,6 +28,9 @@ fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
+        document::Link { rel: "preconnect", href: "https://fonts.googleapis.com" }
+        document::Link { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" }
+        document::Link { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" }
         Router::<Route> {}
     }
 }
