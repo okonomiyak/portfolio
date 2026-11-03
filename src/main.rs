@@ -1,4 +1,7 @@
+mod views;
+
 use dioxus::prelude::*;
+use views::{Home};
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -27,32 +30,24 @@ fn App() -> Element {
     }
 }
 
-#[component]
-pub fn Hero() -> Element {
-    rsx! {
-        div {
-            id: "hero",
-            img { src: HEADER_SVG, id: "header" }
-            div { id: "links",
-                a { href: "https://dioxuslabs.com/learn/0.7/", "📚 Learn Dioxus" }
-                a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
-                a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
-                a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
-                a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
-                a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
-            }
-        }
-    }
-}
+// #[component]
+// pub fn Hero() -> Element {
+//     rsx! {
+//         div {
+//             id: "hero",
+//             img { src: HEADER_SVG, id: "header" }
+//             div { id: "links",
+//                 a { href: "https://dioxuslabs.com/learn/0.7/", "📚 Learn Dioxus" }
+//                 a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
+//                 a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
+//                 a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
+//                 a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
+//                 a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
+//             }
+//         }
+//     }
+// }
 
-/// Home page
-#[component]
-fn Home() -> Element {
-    rsx! {
-        Hero {}
-
-    }
-}
 
 /// Blog page
 #[component]
