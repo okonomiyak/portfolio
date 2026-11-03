@@ -1,5 +1,7 @@
 use dioxus::prelude::*;
 
+use crate::components::Footer;
+
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 
 /// Home page
@@ -25,6 +27,6 @@ pub fn Home() -> Element {
                 }
             }
         }
-
+        Footer {}
     }
 }
