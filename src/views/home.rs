@@ -13,7 +13,7 @@ pub fn Home() -> Element {
             class:"home",
             section {
                 div {
-                    id:"Fgb",
+                    id:"Fhome",
                     h2 { "iwaportfolio"}
                     h1 { "いわのポートフォリオ" }
                     h2 { "Rustでいろいろ開発する 高専生2年生"}
@@ -24,6 +24,16 @@ pub fn Home() -> Element {
                         a { href: "", class:"bluebutton","詳細"}
                         a { href: "", class:"whitebutton" ,"概要を見る >"}
                     }
+                }
+                div {
+                    id:"Shome",
+                    h1 { "色々使える"}
+                    p {"Rust: このサイト、Discordボット"}
+                    p {"Java: Minecraft の Mod・アドオン"}
+                    p {"Unity (C#): ブラウザで遊べるレースゲーム"}
+                    p {"Linux / Proxmox: 自宅サーバーの運用"}
+                    p {"ESP32 / Arduino: ディスプレイ "}
+                    p {"ROS2: ロボットの制御" }
                 }
             }
         }

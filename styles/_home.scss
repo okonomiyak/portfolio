@@ -2,26 +2,48 @@
 
 .home {
     text-align: center;
-    h1 {
-        margin: 0px;
-        font-size: 5rem;
-    }
-    h2 {
-        margin: 3px;
-        margin-bottom: -10px;
-        color: $subtext;
-        font-size: 2rem;
-    }
-    #Fgb {
+    #Fhome {
         padding: 0px;
         padding-top: 30px;
+        margin-bottom: 80px;
+        margin-top: 80px;
         margin-left: 20px;
+        
+        h1 {
+            margin: 0px;
+            font-size: 5rem;
+        }
+        h2 {
+            margin: 3px;
+            margin-bottom: -10px;
+            color: $subtext;
+            font-size: 2rem;
+        }
 
         .button{
             display: flex;
             justify-content: center; 
             gap: 10px;
             margin-top: 40px;
+        }
+    }
+    #Shome{
+        background-color: $text;
+        color: $bg;
+        margin-top: 30px;
+        padding: 30px;
+
+        h1 {
+            font-size: 4rem;
+            background: linear-gradient(90deg, #eef4ff 0%, #ffe3c7 45%, #ffa95e 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            color: $border;
+            font-size: 2rem;
         }
     }
 }
