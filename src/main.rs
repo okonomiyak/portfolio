@@ -1,9 +1,11 @@
 mod views;
+mod components;
 
+use components::Navbar;
 use dioxus::prelude::*;
 use views::{Home};
 
-#[derive(Debug, Clone, Routable, PartialEq)]
+#[derive(Routable, Clone, PartialEq)]
 #[rustfmt::skip]
 enum Route {
     #[layout(Navbar)]
@@ -29,24 +31,6 @@ fn App() -> Element {
         Router::<Route> {}
     }
 }
-
-// #[component]
-// pub fn Hero() -> Element {
-//     rsx! {
-//         div {
-//             id: "hero",
-//             img { src: HEADER_SVG, id: "header" }
-//             div { id: "links",
-//                 a { href: "https://dioxuslabs.com/learn/0.7/", "📚 Learn Dioxus" }
-//                 a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
-//                 a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
-//                 a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
-//                 a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
-//                 a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
-//             }
-//         }
-//     }
-// }
 
 
 /// Blog page
@@ -74,22 +58,3 @@ pub fn Blog(id: i32) -> Element {
     }
 }
 
-/// Shared navbar component.
-#[component]
-fn Navbar() -> Element {
-    rsx! {
-        div {
-            id: "navbar",
-            Link {
-                to: Route::Home {},
-                "Home"
-            }
-            Link {
-                to: Route::Blog { id: 1 },
-                "Blog"
-            }
-        }
-
-        Outlet::<Route> {}
-    }
-}

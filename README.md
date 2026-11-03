@@ -1,3 +1,7 @@
+# WebPage
+
+https://okonomiyak.github.io/portfolio
+
 # Development
 
 Your new bare-bones project includes minimal organization with a single `main.rs` file and a few assets.
@@ -16,11 +20,19 @@ Dioxus (Rust) で作成した静的サイト。GitHub Pages で公開する。
 
 ## ビルド
 
+### 完成用
 ```powershell
 dx bundle --platform web --release
 ```
 
 出力先: `target/dx/Portfolio/release/web/public/`
+
+### 開発用
+```powershell
+dx serve
+```
+
+Url: http://127.0.0.1:8080/portfolio/
 
 ## GitHub Pages 用の設定
 
