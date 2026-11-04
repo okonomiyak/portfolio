@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::data::uses;
+use crate::data::Uses;
 
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 const IMGS: [Asset;6] = [
@@ -14,7 +14,7 @@ const IMGS: [Asset;6] = [
 #[component]
 pub fn Works() -> Element {
     let mut count = use_signal(|| 0);
-    let langs: Vec<_> = (0..6).map(uses::call_use).collect();
+    let langs: Vec<_> = (0..6).map(Uses::call_use).collect();
     let last = langs.len() as i32 - 1;
     let text = move |i: i32| {
         if i == count() { "●" } else { "○" }
@@ -45,8 +45,9 @@ pub fn Works() -> Element {
                         key: "{i}",
                         id: "slide-{i}",
                         class: "slide",
-                        h1 {"{uses::name(lan).to_string()}"}
-                        p { "{uses::call_sections(lan)}" }
+                        href:"",
+                        h1 {"{Uses::name(lan).to_string()}"}
+                        p { "{Uses::call_sections(lan)}" }
                         img { src: IMGS[i], alt: "..." }
                     }
                 }

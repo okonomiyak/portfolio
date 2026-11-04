@@ -1,4 +1,4 @@
-pub enum uses {
+pub enum Uses {
     Rust,
     Java,
     Python,
@@ -6,36 +6,36 @@ pub enum uses {
     Arduino,
     ROS2,
 }
-impl uses {
+impl Uses {
     pub fn call_sections(&self) -> &str {
         let i = match self {
-            uses::Rust => 0,
-            uses::Java => 1,
-            uses::Python => 2,
-            uses::Unity => 3,
-            uses::Arduino => 4,
-            uses::ROS2 => 5,
+            Uses::Rust => 0,
+            Uses::Java => 1,
+            Uses::Python => 2,
+            Uses::Unity => 3,
+            Uses::Arduino => 4,
+            Uses::ROS2 => 5,
         };
         USE_SECTIONS[i]
     }
     pub fn name(&self) -> &str {
         match self {
-            uses::Rust => "Rust",
-            uses::Java => "Java",
-            uses::Python => "Python",
-            uses::Unity => "Unity",
-            uses::Arduino => "Arduino",
-            uses::ROS2 => "ROS2",
+            Uses::Rust => "Rust",
+            Uses::Java => "Java",
+            Uses::Python => "Python",
+            Uses::Unity => "Unity",
+            Uses::Arduino => "Arduino",
+            Uses::ROS2 => "ROS2",
         }
     }
     pub fn call_use(i:i32) -> Self{
         match i {
-            0 => uses::Rust,
-            1 => uses::Java,
-            2 => uses::Python,
-            3 => uses::Unity,
-            4 => uses::Arduino,
-            _ => uses::ROS2,
+            0 => Uses::Rust,
+            1 => Uses::Java,
+            2 => Uses::Python,
+            3 => Uses::Unity,
+            4 => Uses::Arduino,
+            _ => Uses::ROS2,
             }
     }
 }
