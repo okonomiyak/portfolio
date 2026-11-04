@@ -2,6 +2,17 @@
 
 .home {
     text-align: center;
+    h1 {
+        margin: 0px;
+        font-size: clamp(4.5rem, 6vw, 5rem);
+    }
+    h2 {
+        margin: 3px;
+        margin-bottom: -10px;
+        margin: 5px;
+        color: $subtext;
+        font-size: clamp(1rem, 10vw, 2rem);
+    }
     #Fhome {
         padding: 0px;
         padding-top: 30px;
@@ -10,21 +21,11 @@
         margin-top: 20px;
         margin-left: 20px;
         
-        h1 {
-            margin: 0px;
-            font-size: clamp(4.5rem, 6vw, 5rem);
-        }
-        h2 {
-            margin: 3px;
-            margin-bottom: -10px;
-            margin: 5px;
-            color: $subtext;
-            font-size: clamp(1rem, 10vw, 2rem);
-        }
 
         .button{
             margin-top: 100px;
             padding-top: 200px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center; 
             gap: 10px;
@@ -44,6 +45,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            margin-bottom: 20px;
         }
 
         p {
@@ -53,5 +55,48 @@
         button{
             color: $bg;
         }
+    }
+    .about { 
+        padding: 96px 16px; 
+
+        h3 {
+            background: linear-gradient(90deg, #1d1d1f 25%, #0071e3 100%);
+            font-size: 2rem;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: -20px;
+        }
+        .inner { 
+            max-width: 880px;
+            margin: 0 auto; 
+        }
+        .lead { 
+            font-size: 1.5rem; 
+            line-height: 1.8; 
+            color: $subtext; 
+            max-width: 36em; 
+            margin: 0 0 48px; 
+        }
+        .facts { 
+            margin: 0; 
+            .row { 
+                display: flex;
+                justify-content: space-between;
+                gap: 16px; 
+                padding: 18px 0; 
+                border-top: 1px solid #d2d2d7; 
+            }
+            dt { 
+                color: $subtext; 
+                flex: none; 
+            }
+            dd { 
+                margin: 0; 
+                text-align: right; 
+                font-weight: 500; 
+            }
+        }
+
     }
 }
