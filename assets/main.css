@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .navbar {
   display: flex;
   align-items: center;
@@ -86,14 +87,23 @@
   margin-bottom: 12px;
 }
 #works .slider .slide {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  background-color: #282828;
+  flex: 0 0 80%;
+  scroll-snap-align: center;
+  background-color: #0d0d0d;
   border-radius: 20px;
+  padding-bottom: 50px;
   margin: 0 10%;
 }
 #works .slider .slide h1 {
   color: #FFFFFF;
+  margin-bottom: -40px;
+}
+#works .slider .slide img {
+  max-width: 100%;
+  height: auto;
+  width: 200px;
+  height: 200px;
+  filter: brightness(0) invert(1); /* どんな色でも、白一色にする */
 }
 #works .buttons {
   display: flex;

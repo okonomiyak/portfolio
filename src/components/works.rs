@@ -2,6 +2,13 @@ use dioxus::prelude::*;
 use crate::data::uses;
 
 const MAIN_CSS: Asset = asset!("/assets/main.css");
+const IMGS: [Asset;5] = [
+    asset!("/assets/img/rust.svg"),
+    asset!("/assets/img/java.svg"),
+    asset!("/assets/img/unity.svg"),
+    asset!("/assets/img/arduino.svg"),
+    asset!("/assets/img/ros2.svg")
+    ];
 
 #[component]
 pub fn Works() -> Element {
@@ -39,6 +46,7 @@ pub fn Works() -> Element {
                         class: "slide",
                         h1 {"{uses::name(lan).to_string()}"}
                         p { "{uses::call_sections(lan)}" }
+                        img { src: IMGS[i], alt: "..." }
                     }
                 }
             }

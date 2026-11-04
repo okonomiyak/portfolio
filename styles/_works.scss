@@ -10,14 +10,23 @@
     margin-bottom: 12px;        // ドットとの間隔
 
     .slide {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
+      flex: 0 0 80%;
+      scroll-snap-align: center;
       background-color: $textbg;
       border-radius: 20px;
+      padding-bottom: 50px;
       margin: 0 10%;
 
       h1 {
         color: $bg;
+        margin-bottom: -40px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        width: 200px;
+        height: 200px;
+        filter: brightness(0) invert(1);   /* どんな色でも、白一色にする */
       }
     }
   }
