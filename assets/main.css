@@ -57,7 +57,6 @@
   padding-bottom: 50px;
   margin-bottom: 20px;
   margin-top: 20px;
-  margin-left: 20px;
 }
 .home #Fhome .button {
   margin-top: 100px;
@@ -191,6 +190,7 @@ html, body {
   padding: 0;
   background: #FFFFFF;
   color: #1D1D1F;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
