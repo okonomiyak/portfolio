@@ -29,7 +29,7 @@ dx bundle --platform web --release
 
 ### 開発用
 ```powershell
-sass --watch styles/main.scss assets/main.css
+npx sass --watch styles/main.scss assets/main.css
 dx serve
 ```
 

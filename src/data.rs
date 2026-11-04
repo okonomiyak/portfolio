@@ -4,7 +4,6 @@ pub enum uses {
     Rust,
     Java,
     Unity,
-    Linux,
     Arduino,
     ROS2,
 }
@@ -14,9 +13,8 @@ impl uses {
             uses::Rust => 0,
             uses::Java => 1,
             uses::Unity => 2,
-            uses::Linux => 3,
-            uses::Arduino => 4,
-            uses::ROS2 => 5,
+            uses::Arduino => 3,
+            uses::ROS2 => 4,
         };
         USE_SECTIONS[i]
     }
@@ -25,7 +23,6 @@ impl uses {
             uses::Rust => "Rust",
             uses::Java => "Java",
             uses::Unity => "Unity",
-            uses::Linux => "Linux",
             uses::Arduino => "Arduino",
             uses::ROS2 => "ROS2",
         }
@@ -35,8 +32,7 @@ impl uses {
             0 => uses::Rust,
             1 => uses::Java,
             2 => uses::Unity,
-            3 => uses::Linux,
-            4 => uses::Arduino,
+            3 => uses::Arduino,
             _ => uses::ROS2,
             }
     }
@@ -46,7 +42,6 @@ pub const USE_SECTIONS: &[&str] = &[
     "このサイト、Discordボット",
     "Minecraft の Mod・アドオン",
     "(C#) ブラウザで遊べるレースゲーム",
-    "Proxmox 自宅サーバーの運用",
     "ESP32 + ディスプレイ",
     "ロボットの制御"
     ];

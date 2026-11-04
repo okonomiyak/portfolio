@@ -77,14 +77,31 @@
   background-color: #F5F5F7;
 }
 
+#works .slider {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-bottom: 12px;
+}
+#works .slider .slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  background-color: #282828;
+  border-radius: 20px;
+  margin: 0 10%;
+}
+#works .slider .slide h1 {
+  color: #FFFFFF;
+}
 #works .buttons {
   display: flex;
   align-items: center;
-  text-align: center;
   width: fit-content;
   margin: 0 auto;
   background-color: rgba(100, 97, 97, 0.5019607843);
-  padding: 5px;
+  padding: 8px;
   border-radius: 20px;
   line-height: 1;
 }
@@ -93,7 +110,7 @@
   border: none;
   padding: 0 3px;
   font: inherit;
-  font-size: 0.5rem;
+  font-size: 1rem;
   line-height: 1;
   cursor: pointer;
 }
