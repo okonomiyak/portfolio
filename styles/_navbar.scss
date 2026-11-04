@@ -11,6 +11,10 @@
   font-family: $font-English;
   padding-left: 20%;
 
+  @media (max-width: 600px) {
+    padding-left: 5%;
+  }
+
   a {
     color: $text;
     text-decoration: none;
@@ -25,5 +29,9 @@
     gap: 20px;
     margin-left: auto;
     padding-right: 30%;
+
+    @media (max-width: 600px) {
+      padding-right: 5%;
+    }
   }
 }
