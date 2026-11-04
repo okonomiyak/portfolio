@@ -2,9 +2,10 @@ use dioxus::prelude::*;
 use crate::data::uses;
 
 const MAIN_CSS: Asset = asset!("/assets/main.css");
-const IMGS: [Asset;5] = [
+const IMGS: [Asset;6] = [
     asset!("/assets/img/rust.svg"),
     asset!("/assets/img/java.svg"),
+    asset!("/assets/img/python.svg"),
     asset!("/assets/img/unity.svg"),
     asset!("/assets/img/arduino.svg"),
     asset!("/assets/img/ros2.svg")
@@ -13,7 +14,7 @@ const IMGS: [Asset;5] = [
 #[component]
 pub fn Works() -> Element {
     let mut count = use_signal(|| 0);
-    let langs: Vec<_> = (0..5).map(uses::call_use).collect();
+    let langs: Vec<_> = (0..6).map(uses::call_use).collect();
     let last = langs.len() as i32 - 1;
     let text = move |i: i32| {
         if i == count() { "●" } else { "○" }
