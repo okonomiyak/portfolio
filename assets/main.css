@@ -9,7 +9,10 @@
   font-size: larger;
   padding: 10px;
   border-bottom: 2px solid #CCCCCC;
-  background-color: #EEEEEE;
+  background: rgba(255, 255, 255, 0.72); /* 半透明の白 */
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px); /* 背面をぼかす */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* 細い下線 */
   font-family: "JetBrainsMono", monospace;
   padding-left: 20%;
 }
@@ -52,42 +55,48 @@
   font-size: clamp(1rem, 10vw, 2rem);
 }
 .home #Fhome {
-  padding: 0px;
-  padding-top: 30px;
-  padding-bottom: 50px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  box-sizing: border-box;
+  min-height: calc(100vh - 48px - 60px); /* 古いブラウザ用 */
+  min-height: calc(100dvh - 48px - 60px); /* 48px はナビ、60px は次の帯を見せる分 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* 最初の要素を上、最後の要素を下に */
+  text-align: center;
+  gap: 6px;
+  padding: clamp(48px, 12vh, 140px) 0 clamp(80px, 16vh, 200px);
 }
 .home #Fhome .button {
-  margin-top: 100px;
-  padding-top: 200px;
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 40px;
   font-size: medium;
 }
+.home #Fhome img {
+  max-width: 100%;
+  max-height: 40vh;
+}
 .home #Shome {
+  box-sizing: border-box;
+  min-height: calc(100vh - 48px);
+  min-height: calc(100dvh - 48px);
+  padding: 30px;
   background-color: #1D1D1F;
   color: #FFFFFF;
-  margin-top: 30px;
-  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
 }
-.home #Shome h1 {
+.home #Shome > h1 {
+  margin: 0;
   font-size: 4rem;
   background: linear-gradient(90deg, #eef4ff 0%, #ffe3c7 45%, #ffa95e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: 20px;
-}
-.home #Shome p {
-  color: #CCCCCC;
-  font-size: 2rem;
-}
-.home #Shome button {
-  color: #FFFFFF;
 }
 .home .about {
   padding: 96px 16px;
@@ -106,6 +115,8 @@
 }
 .home .about .lead {
   font-size: 1.5rem;
+  word-break: auto-phrase; /* 文節の途中で改行しない */
+  text-wrap: pretty;
   line-height: 1.8;
   color: #646161;
   max-width: 36em;
@@ -113,6 +124,7 @@
 }
 .home .about .facts {
   margin: 0;
+  font-size: large;
 }
 .home .about .facts .row {
   display: flex;
@@ -138,47 +150,63 @@
   background-color: #F5F5F7;
 }
 
+#works {
+  width: 100%;
+}
 #works .slider {
   display: flex;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  margin-bottom: 12px;
+  margin-bottom: 50px;
 }
 #works .slider .slide {
   flex: 0 0 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 64px;
   scroll-snap-align: center;
-  background-color: #0d0d0d;
-  border-radius: 20px;
-  padding-bottom: 50px;
   margin: 0 10%;
+  padding-block: 80px;
+  background-color: #0d0d0d;
+  border-radius: 24px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), 0 24px 48px rgba(0, 0, 0, 0.5);
 }
 #works .slider .slide h1 {
+  margin: 0;
+  font-size: 4rem;
   color: #FFFFFF;
-  margin-bottom: -40px;
+}
+#works .slider .slide p {
+  margin: 0;
+  font-size: 2rem;
+  color: #CCCCCC;
 }
 #works .slider .slide img {
-  max-width: 100%;
-  height: auto;
   width: 200px;
   height: 200px;
-  filter: brightness(0) invert(1); /* どんな色でも、白一色にする */
+  max-width: 100%;
+  margin: 8px 0 0;
+  filter: brightness(0) invert(1);
 }
 #works .buttons {
   display: flex;
   align-items: center;
   width: fit-content;
   margin: 0 auto;
-  background-color: rgba(100, 97, 97, 0.5019607843);
-  padding: 8px;
+  padding: 12px;
   border-radius: 20px;
+  background-color: rgba(100, 97, 97, 0.5019607843);
   line-height: 1;
 }
 #works .buttons button {
-  background: none;
-  border: none;
   padding: 0 3px;
+  border: none;
+  background: none;
+  color: #FFFFFF;
   font: inherit;
   font-size: 1rem;
   line-height: 1;

@@ -1,53 +1,72 @@
 @use "variables" as *;
 
+// スライダー部品
 #works {
+  width: 100%;                          // align-items: center で縮まないように
+
   .slider {
     display: flex;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none;      // スクロールバーを隠す(任意)
-    margin-bottom: 12px;        // ドットとの間隔
+    scrollbar-width: none;
+    margin-bottom: 50px;                // ドットとの間隔
 
     .slide {
       flex: 0 0 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;                // 中身の間隔を、ここで統一
+      padding-block: 64px;
       scroll-snap-align: center;
-      background-color: $textbg;
-      border-radius: 20px;
-      padding-bottom: 50px;
       margin: 0 10%;
+      padding-block: 80px;
+      background-color: $textbg;
+      border-radius: 24px;
+      box-shadow:
+        0 0 0 2px rgb(255 255 255 / 0.08),   // 細い境界線(影で作る)
+        0 24px 48px rgb(0 0 0 / 0.5);
 
       h1 {
+        margin: 0;
+        font-size: 4rem;
         color: $bg;
-        margin-bottom: -40px;
+      }
+      p {
+        margin: 0;
+        font-size: 2rem;
+        color: $border;
       }
       img {
-        max-width: 100%;
-        height: auto;
         width: 200px;
         height: 200px;
-        filter: brightness(0) invert(1);   /* どんな色でも、白一色にする */
+        max-width: 100%;
+        margin: 8px 0 0;
+        filter: brightness(0) invert(1);     // 白一色にする
       }
     }
   }
 
+  // ドット
   .buttons {
     display: flex;
     align-items: center;
     width: fit-content;
     margin: 0 auto;
-    background-color: $buttonbg;
-    padding: 8px;
+    padding: 12px;
     border-radius: 20px;
+    background-color: $buttonbg;
     line-height: 1;
 
     button {
-      background: none;
-      border: none;
       padding: 0 3px;
+      border: none;
+      background: none;
+      color: $bg;
       font: inherit;
       font-size: 1rem;
-      line-height: 1;           // font: inherit の「後」に書く
+      line-height: 1;                        // font: inherit の「後」に書く
       cursor: pointer;
     }
   }

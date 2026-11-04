@@ -41,7 +41,7 @@ pub fn Works() -> Element {
                     }
                 },
                 for (i, lan) in langs.iter().enumerate() {
-                    div {
+                    a {
                         key: "{i}",
                         id: "slide-{i}",
                         class: "slide",

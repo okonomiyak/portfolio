@@ -15,10 +15,13 @@ pub fn Home() -> Element {
             section {
                 div {
                     id:"Fhome",
-                    h2 { "iwaportfolio"}
-                    h1 { "いわのポートフォリオ" }
-                    h2 { "Rustでいろいろ開発する 高専生2年生"}
-                    h2 { "他にも Unity(C#) Java Python などもやってます"}
+                    div {
+                        h2 { "iwaportfolio"}
+                        h1 { "いわのポートフォリオ" }
+                        h2 { "Rustでいろいろ開発する 高専生2年生"}
+                        h2 { "他にも Unity(C#) Java Python などもやってます"}
+                        img{ src: asset!("assets/img/hero-glow.webp"),alt:"hero"}
+                    }
 
                     div {
                         class: "button",
@@ -45,11 +48,11 @@ pub fn Home() -> Element {
                             "概要を見る >"
                         }
                     }
-                    div {
-                        id:"Shome",
-                        h1 { "色々使える"}
-                        Works {  } 
-                    }
+                }
+                div {
+                    id:"Shome",
+                    h1 { "色々使える"}
+                    Works {  } 
                 }
             }
             section {
@@ -64,7 +67,7 @@ pub fn Home() -> Element {
                     dl { class: "facts",
                         div { class: "row",
                             dt { "所属" }
-                            dd { "高専 2年 / ロボット部" }
+                            dd { "高専 2年" }
                         }
                         div { class: "row",
                             dt { "よく使う言語" }
