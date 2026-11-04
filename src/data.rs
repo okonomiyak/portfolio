@@ -1,5 +1,3 @@
-use dioxus::prelude::*;
-
 pub enum uses {
     Rust,
     Java,
