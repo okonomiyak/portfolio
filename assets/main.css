@@ -138,7 +138,7 @@ html, body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
 }
 .home .about .inner {
   max-width: 880px;
