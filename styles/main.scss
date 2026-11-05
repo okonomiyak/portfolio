@@ -1,36 +1,7 @@
 @use "variables" as *;
+@use "base";
+@use "buttons";
 @use "navbar";
 @use "home";
 @use "footer";
 @use "works";
-
-html, body {
-    margin: 0;
-    padding: 0;
-    background: $bg;
-    color: $text;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    @media (max-width: 600px) {
-        font-size: 11px;
-    }
-}
-
-.bluebutton{
-    background-color: $accent;
-    color: $bg;
-    text-decoration: none;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 20px;
-}
-
-.whitebutton{
-    color: $accent;
-    text-decoration: none;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-}
