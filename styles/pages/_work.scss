@@ -1,3 +1,51 @@
-#works{
-    
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+
+#work {
+    text-align: center;
+    padding-inline: 16px;                     // 画面の端に、くっつかないように
+
+    .header {
+        text-align: left;
+        h1 {
+            margin: 0;
+            font-size: fluid(28px, 80px, 320px, 900px);
+        }
+    }
+
+    .boxs {
+        display: grid;
+        // 1個が最小100px。入るだけ並べて、足りなければ、次の段へ
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 32px 16px;
+        max-width: 880px;
+        margin: 40px auto 0;
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;                        // アイコンと文字の間
+            font-size: fluid(14px, 22px, 320px, 768px);
+            color: $text;
+            text-decoration: none;
+
+            img {
+                width: fluid(48px, 64px, 320px, 768px);
+                height: fluid(48px, 64px, 320px, 768px);
+                object-fit: contain;
+                opacity: 0.85;
+                filter: brightness(0);        // 黒一色にする
+                transition: opacity 0.2s, transform 0.2s;
+            }
+
+            &:hover img { opacity: 1; transform: translateY(-4px); }
+            &:focus-visible { outline: 2px solid $text; outline-offset: 6px; border-radius: 8px; }
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .boxs .box img { transition: none; }
+        .boxs .box:hover img { transform: none; }
+    }
 }
