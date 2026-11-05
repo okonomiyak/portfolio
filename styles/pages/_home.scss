@@ -1,15 +1,20 @@
-@use "variables" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
 
 .home {
     text-align: center;
     h1 {
         margin: 0px;
-        font-size: clamp(4.5rem, 6vw, 5rem);
+        font-size: fluid(28px, 80px, 320px, 900px);
+        word-break: auto-phrase;    /* 文節の途中で改行しない */
+        text-wrap: pretty;
     }
     h2 {
         margin: 5px;
         color: $subtext;
-        font-size: clamp(1rem, 10vw, 2rem);
+        font-size: fluid(15px, 32px, 320px, 900px);
+        word-break: auto-phrase;    /* 文節の途中で改行しない */
+        text-wrap: pretty;
     }
     #Fhome {
         box-sizing: border-box;
@@ -50,7 +55,7 @@
         // セクションの見出し(直下の h1 だけ。スライド内の h1 には効かせない)
         > h1 {
             margin: 0;
-            font-size: 4rem;
+            font-size: fluid(36px, 64px, 320px, 768px);
             background: linear-gradient(90deg, #eef4ff 0%, #ffe3c7 45%, #ffa95e 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -62,18 +67,18 @@
 
         h3 {
             background: linear-gradient(90deg, #1d1d1f 25%, #0071e3 100%);
-            font-size: 2rem;
+            font-size: fluid(20px, 32px, 320px, 768px);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: -10px;
         }
-        .inner { 
+        .inner {
             max-width: 880px;
-            margin: 0 auto; 
+            margin: 0 auto;
         }
-        .lead { 
-            font-size: 1.5rem; 
+        .lead {
+            font-size: fluid(17px, 24px, 320px, 768px);
             word-break: auto-phrase;    /* 文節の途中で改行しない */
             text-wrap: pretty;
             line-height: 1.8; 

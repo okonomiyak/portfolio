@@ -1,4 +1,5 @@
-@use "variables" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
 
 // スライダー部品
 #works {
@@ -20,23 +21,27 @@
       gap: 16px;                // 中身の間隔を、ここで統一
       scroll-snap-align: center;
       margin: 0 10%;
-      padding-block: 80px;
+      padding: 80px 24px;       // 横の余白がないとテキストが端まで伸びて折り返しが崩れる
       background-color: $textbg;
       border-radius: 24px;
-      text-decoration: none; 
+      text-decoration: none;
       box-shadow:
         0 0 0 2px rgb(255 255 255 / 0.08),   // 細い境界線(影で作る)
         0 24px 48px rgb(0 0 0 / 0.5);
 
       h1 {
         margin: 0;
-        font-size: 4rem;
+        font-size: fluid(32px, 64px, 320px, 768px);
         color: $bg;
+        word-break: auto-phrase;
+        text-wrap: pretty;
       }
       p {
         margin: 0;
-        font-size: 2rem;
+        font-size: fluid(17px, 32px, 320px, 768px);
         color: $border;
+        word-break: auto-phrase;
+        text-wrap: pretty;
       }
       img {
         width: 200px;

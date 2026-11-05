@@ -8,11 +8,6 @@ html, body {
   font-weight: 400;
   font-style: normal;
 }
-@media (max-width: 600px) {
-  html, body {
-    font-size: 11px;
-  }
-}
 
 .bluebutton {
   background-color: #0071e3;
@@ -73,17 +68,95 @@ html, body {
   }
 }
 
+#works {
+  width: 100%;
+}
+#works .slider {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-bottom: 50px;
+}
+#works .slider .slide {
+  flex: 0 0 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  scroll-snap-align: center;
+  margin: 0 10%;
+  padding: 80px 24px;
+  background-color: #0d0d0d;
+  border-radius: 24px;
+  text-decoration: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+#works .slider .slide h1 {
+  margin: 0;
+  font-size: clamp(32px, 9.1428571429px + 7.1428571429vw, 64px);
+  color: #FFFFFF;
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+#works .slider .slide p {
+  margin: 0;
+  font-size: clamp(17px, 6.2857142857px + 3.3482142857vw, 32px);
+  color: #CCCCCC;
+  word-break: auto-phrase;
+  text-wrap: pretty;
+}
+#works .slider .slide img {
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+  margin: 8px 0 0;
+  filter: brightness(0) invert(1);
+}
+#works .buttons {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 20px;
+  background-color: rgba(100, 97, 97, 0.5019607843);
+  line-height: 1;
+}
+#works .buttons button {
+  padding: 0 3px;
+  border: none;
+  background: none;
+  color: #FFFFFF;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+#footer {
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  background-color: #F5F5F7;
+}
+
 .home {
   text-align: center;
 }
 .home h1 {
   margin: 0px;
-  font-size: clamp(4.5rem, 6vw, 5rem);
+  font-size: clamp(28px, -0.6896551724px + 8.9655172414vw, 80px);
+  word-break: auto-phrase; /* 文節の途中で改行しない */
+  text-wrap: pretty;
 }
 .home h2 {
   margin: 5px;
   color: #646161;
-  font-size: clamp(1rem, 10vw, 2rem);
+  font-size: clamp(15px, 5.6206896552px + 2.9310344828vw, 32px);
+  word-break: auto-phrase; /* 文節の途中で改行しない */
+  text-wrap: pretty;
 }
 .home #Fhome {
   box-sizing: border-box;
@@ -123,7 +196,7 @@ html, body {
 }
 .home #Shome > h1 {
   margin: 0;
-  font-size: 4rem;
+  font-size: clamp(36px, 16px + 6.25vw, 64px);
   background: linear-gradient(90deg, #eef4ff 0%, #ffe3c7 45%, #ffa95e 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -134,7 +207,7 @@ html, body {
 }
 .home .about h3 {
   background: linear-gradient(90deg, #1d1d1f 25%, #0071e3 100%);
-  font-size: 2rem;
+  font-size: clamp(20px, 11.4285714286px + 2.6785714286vw, 32px);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -145,7 +218,7 @@ html, body {
   margin: 0 auto;
 }
 .home .about .lead {
-  font-size: 1.5rem;
+  font-size: clamp(17px, 12px + 1.5625vw, 24px);
   word-break: auto-phrase; /* 文節の途中で改行しない */
   text-wrap: pretty;
   line-height: 1.8;
@@ -172,76 +245,6 @@ html, body {
   margin: 0;
   text-align: right;
   font-weight: 500;
-}
-
-#footer {
-  margin-top: 30px;
-  padding: 20px;
-  text-align: center;
-  background-color: #F5F5F7;
-}
-
-#works {
-  width: 100%;
-}
-#works .slider {
-  display: flex;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  margin-bottom: 50px;
-}
-#works .slider .slide {
-  flex: 0 0 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  scroll-snap-align: center;
-  margin: 0 10%;
-  padding-block: 80px;
-  background-color: #0d0d0d;
-  border-radius: 24px;
-  text-decoration: none;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08), 0 24px 48px rgba(0, 0, 0, 0.5);
-}
-#works .slider .slide h1 {
-  margin: 0;
-  font-size: 4rem;
-  color: #FFFFFF;
-}
-#works .slider .slide p {
-  margin: 0;
-  font-size: 2rem;
-  color: #CCCCCC;
-}
-#works .slider .slide img {
-  width: 200px;
-  height: 200px;
-  max-width: 100%;
-  margin: 8px 0 0;
-  filter: brightness(0) invert(1);
-}
-#works .buttons {
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 12px;
-  border-radius: 20px;
-  background-color: rgba(100, 97, 97, 0.5019607843);
-  line-height: 1;
-}
-#works .buttons button {
-  padding: 0 3px;
-  border: none;
-  background: none;
-  color: #FFFFFF;
-  font: inherit;
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

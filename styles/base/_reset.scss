@@ -1,0 +1,17 @@
+@use "../abstracts/variables" as *;
+
+// 以前はここでモバイル (max-width: 600px) 時に html の font-size を 11px に
+// 落としていたが、rem を使う各所のサイズがこの切り替えに依存してしまい、
+// 画面幅によって不連続にサイズが変わる・特定の幅で折り返しが崩れるといった
+// 不具合の原因になっていた。サイズが可変であるべき要素は
+// abstracts/_functions.scss の fluid() を個別に使うようにし、
+// ここではルートの font-size を固定する。
+html, body {
+    margin: 0;
+    padding: 0;
+    background: $bg;
+    color: $text;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}

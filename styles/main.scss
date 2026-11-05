@@ -1,7 +1,8 @@
-@use "variables" as *;
-@use "base";
-@use "buttons";
-@use "navbar";
-@use "home";
-@use "footer";
-@use "works";
+@use "abstracts/variables" as *;
+
+@use "base/reset";
+@use "components/buttons";
+@use "components/navbar";
+@use "components/works";
+@use "layout/footer";
+@use "pages/home";

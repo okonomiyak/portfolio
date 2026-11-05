@@ -1,0 +1,14 @@
+@use "sass:math";
+
+/// 画面幅 $min-vw 〜 $max-vw の間で $min-size から $max-size へ連続的に変化する値を作る。
+///
+/// rem ではなく px を基準に計算することで、ルートの font-size (ブラウザ設定やズーム) に
+/// 結果が左右されないようにしている。以前は `clamp(4.5rem, 6vw, 5rem)` のように vw 係数だけで
+/// 可変部分を作っていたが、スマホ程度の画面幅では vw 側の値が min を下回ってしまい、
+/// どんな画面幅でも min に張り付いて「実質固定サイズ」になるという不具合があった。
+/// min/max の2点を明示的に指定してその間を線形補間することで、その問題を避ける。
+@function fluid($min-size, $max-size, $min-vw: 320px, $max-vw: 768px) {
+  $slope: math.div($max-size - $min-size, $max-vw - $min-vw);
+  $intercept: $min-size - $slope * $min-vw;
+  @return clamp(#{$min-size}, calc(#{$intercept} + #{$slope * 100}vw), #{$max-size});
+}
