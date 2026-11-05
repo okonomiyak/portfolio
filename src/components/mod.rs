@@ -1,7 +1,7 @@
 mod navbar;
 mod footer;
-mod works;
+mod cworks;
 
 pub use navbar::Navbar;
 pub use footer::Footer;
-pub use works::Works;
+pub use cworks::Cworks;

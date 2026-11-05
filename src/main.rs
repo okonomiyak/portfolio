@@ -4,7 +4,7 @@ mod data;
 
 use components::Navbar;
 use dioxus::prelude::*;
-use views::{Home};
+use views::{Home,Works};
 
 #[derive(Routable, Clone, PartialEq)]
 #[rustfmt::skip]
@@ -17,7 +17,7 @@ enum Route {
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
-const MAIN_CSS: Asset = asset!("/assets/main.css");
+const MAIN_CSS: Asset = asset!("/styles/main.scss");
 //const HEADER_SVG: Asset = asset!("/assets/header.svg");
 
 fn main() {

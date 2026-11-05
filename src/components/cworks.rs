@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use crate::data::Uses;
 
-const MAIN_CSS: Asset = asset!("/assets/main.css");
+const MAIN_CSS: Asset = asset!("/styles/main.scss");
 const IMGS: [Asset;6] = [
     asset!("/assets/img/rust.svg"),
     asset!("/assets/img/java.svg"),
@@ -12,7 +12,7 @@ const IMGS: [Asset;6] = [
     ];
 
 #[component]
-pub fn Works() -> Element {
+pub fn Cworks() -> Element {
     let mut count = use_signal(|| 0);
     let langs: Vec<_> = (0..6).map(Uses::call_use).collect();
     let last = langs.len() as i32 - 1;
@@ -23,7 +23,7 @@ pub fn Works() -> Element {
     rsx! {
         document::Stylesheet { href: MAIN_CSS }
         div {
-            id: "works",
+            id: "cworks",
             div {
                 class: "slider",
                 onscroll: move |e| {

@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-const MAIN_CSS: Asset = asset!("/assets/main.css");
+const MAIN_CSS: Asset = asset!("/styles/main.scss");
 
 /// Shared navbar component.
 #[component]

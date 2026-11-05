@@ -1,9 +1,9 @@
 use dioxus::prelude::*;
 
 use crate::components::Footer;
-use crate::components::Works;
+use crate::components::Cworks;
 
-const MAIN_CSS: Asset = asset!("/assets/main.css");
+const MAIN_CSS: Asset = asset!("/styles/main.scss");
 
 /// Home page
 #[component]
@@ -52,7 +52,7 @@ pub fn Home() -> Element {
                 div {
                     id:"Shome",
                     h1 { "色々使える"}
-                    Works {  } 
+                    Cworks {  } 
                 }
             }
             section {

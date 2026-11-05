@@ -34,7 +34,12 @@
             gap: 10px;
             font-size: medium;
         }
-        img { max-width: 100%; max-height: 40vh; }
+        img {
+            // 100% だとスマホでは画面幅いっぱいまで広がって大きすぎるため、
+            // 画面幅に応じて小さめの上限で縮める(100% はさらに狭い画面での安全弁)
+            max-width: min(100%, fluid(180px, 420px, 320px, 900px));
+            max-height: 40vh;
+        }
     }
     #Shome {
         box-sizing: border-box;

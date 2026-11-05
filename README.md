@@ -7,7 +7,7 @@ Dioxus 0.7 (Rust) で作成した個人ポートフォリオサイト。GitHub P
 ## 技術スタック
 
 - [Dioxus 0.7](https://dioxuslabs.com/learn/0.7)(`web` フィーチャー、WASM としてビルド)
-- SCSS([Dart Sass](https://sass-lang.com/) でコンパイル)
+- SCSS(`dx` のアセットパイプラインが内蔵の [grass](https://github.com/connorskees/grass) で自動コンパイル。別途 Node.js や `sass` コマンドは不要)
 - GitHub Actions + GitHub Pages でのホスティング
 
 ## プロジェクト構成
@@ -20,29 +20,34 @@ portfolio/
 │  ├─ components/
 │  │  ├─ navbar.rs        # 共通ナビバー(レイアウト、Outlet を含む)
 │  │  ├─ footer.rs        # 共通フッター
-│  │  ├─ works.rs         # 使用技術を横スクロールで見せるスライダー
+│  │  ├─ cworks.rs        # 使用技術を横スクロールで見せるスライダー(id="cworks")
 │  │  ├─ hero.rs          # (未使用。テンプレート由来)
 │  │  └─ mod.rs
 │  └─ views/
-│     ├─ home.rs          # トップページ(Hero + 自己紹介 + Works)
+│     ├─ home.rs          # トップページ(Hero + 自己紹介 + Cworks)
+│     ├─ works.rs         # 作業中の Works ページ(未配線・プレースホルダー)
 │     └─ mod.rs
-├─ styles/                 # SCSS ソース(partial 単位で分割)
-│  ├─ main.scss            # 各 partial を @use するだけのエントリーファイル
-│  ├─ _variables.scss       # 色・フォント・サイズなどの変数
-│  ├─ _base.scss            # html/body のリセットと基本フォント
-│  ├─ _buttons.scss         # .bluebutton / .whitebutton
-│  ├─ _navbar.scss
-│  ├─ _home.scss
-│  ├─ _works.scss
-│  └─ _footer.scss
+├─ styles/                      # SCSS ソース。dx が main.scss を起点に自動コンパイルする
+│  ├─ main.scss                  # 各 partial を @use するだけのエントリーファイル
+│  ├─ abstracts/
+│  │  ├─ _variables.scss          # 色・フォント・サイズなどの変数
+│  │  └─ _functions.scss          # fluid() など、画面幅に応じて滑らかに変化する値を作る関数
+│  ├─ base/
+│  │  └─ _reset.scss              # html/body のリセットと基本フォント
+│  ├─ components/
+│  │  ├─ _buttons.scss            # .bluebutton / .whitebutton
+│  │  ├─ _navbar.scss
+│  │  └─ _cworks.scss
+│  ├─ layout/
+│  │  └─ _footer.scss
+│  └─ pages/
+│     ├─ _home.scss
+│     └─ _work.scss               # Works ページ用(未着手)
 ├─ assets/
-│  ├─ main.css             # styles/*.scss をコンパイルした生成物(コミット対象)
-│  ├─ main.css.map
 │  ├─ favicon.ico
 │  └─ img/                 # 技術ロゴなどの画像
 ├─ Cargo.toml               # Rust 依存とフィーチャーフラグ
 ├─ Dioxus.toml               # dx のビルド設定(base_path など)
-├─ package.json             # sass (npm) の依存のみ
 └─ .github/workflows/deploy.yml  # GitHub Pages への自動デプロイ
 ```
 
@@ -52,26 +57,20 @@ portfolio/
   ```sh
   rustup target add wasm32-unknown-unknown
   ```
-- [dioxus-cli](https://dioxuslabs.com/learn/0.7/CLI/) — `Cargo.toml` の `dioxus` クレートとバージョンを揃えること(ずれるとビルドが失敗する)
+- [dioxus-cli](https://dioxuslabs.com/learn/0.7/CLI/) — `Cargo.toml` の `dioxus` クレートとバージョンを揃えること(ずれると `dx` がバージョン不一致の警告を出し、ファイル変更時の自動リビルドが効かなくなることがある)
   ```sh
-  cargo binstall dioxus-cli@0.7.1
+  cargo binstall dioxus-cli@0.7.10
   ```
-- Node.js(SCSS コンパイル用の `sass` を使うため)
-  ```sh
-  npm install
-  ```
+
+Node.js や npm は不要。SCSS は `asset!("/styles/main.scss")` 経由で `dx` に直接渡しており、`dx serve`/`dx bundle` が内部の `grass` でコンパイルする。
 
 ## 開発用ビルド
-
-SCSS は Dioxus のビルドパイプラインでは自動コンパイルされないため、`sass` で `styles/main.scss` を `assets/main.css` に変換してから `dx serve` を起動する。2つのプロセスを並行して動かす。
-
-```sh
-npx sass --watch styles/main.scss assets/main.css
-```
 
 ```sh
 dx serve
 ```
+
+これだけで Rust コードと SCSS の両方がビルド・監視される。`styles/` 以下を編集すると自動でリコンパイル・ホットリロードされる。
 
 起動後は以下にアクセスする(`Dioxus.toml` の `base_path = "portfolio"` のため、パスに `/portfolio/` が付く)。
 
@@ -79,16 +78,15 @@ dx serve
 http://127.0.0.1:8080/portfolio/
 ```
 
-SCSS を編集したあと、`assets/main.css` が更新されていることを確認してからコミットする(`sass --watch` を止めた状態でコミットしないこと)。
-
 ## 本番用ビルド
 
 ```sh
-npx sass styles/main.scss assets/main.css
 dx bundle --platform web --release
 ```
 
 出力先: `target/dx/portfolio/release/web/public/`
+
+SCSS のコンパイルもこのコマンド内で自動的に行われるため、別途コンパイル済み CSS をコミットしておく必要はない。
 
 ## GitHub Pages 用の設定
 
@@ -119,16 +117,13 @@ GitHub Actions のワークフロー内で自動実行されるため、手動�
 
 1. `wasm32-unknown-unknown` ターゲット付きで Rust をセットアップ
 2. `dioxus-cli` を `cargo binstall` でインストール
-3. `dx bundle --platform web --release` でビルド
+3. `dx bundle --platform web --release` でビルド(SCSS のコンパイルも含む)
 4. `index.html` を `404.html` としてコピー
 5. `target/dx/portfolio/release/web/public` を GitHub Pages にアップロード・デプロイ
 
 初回のみ、リポジトリの **Settings → Pages → Source** を **GitHub Actions** に変更しておく。
 
-SCSS のコンパイル(`npx sass`)はこのワークフローには含まれていない。`assets/main.css` は事前にコンパイルしてコミットしておく必要がある。
-
 ## 注意点
 
-- `dioxus-cli` のバージョンは `Cargo.toml` の `dioxus` クレートのバージョンと揃える。ずれるとビルドに失敗する。
-- `assets/main.css` は SCSS から生成される成果物だが、デプロイ用ワークフローがコンパイルを行わないため、コミットし忘れると本番に反映されない。
+- `dioxus-cli` のバージョンは `Cargo.toml` の `dioxus` クレートのバージョンと揃える。ずれると `dx` が起動時に「dx and dioxus versions are incompatible」という警告を出し、`.rs`/`styles/` の変更を保存しても自動リビルドが走らなくなることがある。症状としては「コードやスタイルを直したのにブラウザに反映されない」ので、その場合はまず `dioxus-cli` のバージョンを揃えるか、`dx serve` を再起動してフルビルドさせる。
 - 画像などのアセットが表示されない場合は、`base_path` の設定漏れを疑う。

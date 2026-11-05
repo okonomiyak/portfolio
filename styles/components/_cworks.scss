@@ -2,7 +2,7 @@
 @use "../abstracts/functions" as *;
 
 // スライダー部品
-#works {
+#cworks {
   width: 100%;                          // align-items: center で縮まないように
 
   .slider {
@@ -44,8 +44,9 @@
         text-wrap: pretty;
       }
       img {
-        width: 200px;
-        height: 200px;
+        // 固定 200px だとスマホの狭いカード幅に対して大きすぎるため、画面幅に応じて縮める
+        width: fluid(110px, 200px, 320px, 768px);
+        height: fluid(110px, 200px, 320px, 768px);
         max-width: 100%;
         margin: 8px 0 0;
         filter: brightness(0) invert(1);     // 白一色にする
