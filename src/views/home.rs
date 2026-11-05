@@ -2,8 +2,7 @@ use dioxus::prelude::*;
 
 use crate::components::Footer;
 use crate::components::Cworks;
-
-const MAIN_CSS: Asset = asset!("/styles/main.scss");
+use crate::data::MAIN_CSS;
 
 /// Home page
 #[component]

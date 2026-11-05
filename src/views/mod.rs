@@ -1,5 +1,7 @@
 mod home;
-mod works;
+mod work;
+mod workdetail;
 
 pub use home::Home;
-pub use works::Works;
+pub use work::Work;
+pub use workdetail::WorkDetail;

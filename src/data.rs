@@ -1,3 +1,8 @@
+use dioxus::prelude::*;
+use std::{fmt, str::FromStr};
+
+pub const MAIN_CSS: Asset = asset!("/styles/main.scss");
+#[derive(Clone, Copy, PartialEq)] 
 pub enum Uses {
     Rust,
     Java,
@@ -39,7 +44,33 @@ impl Uses {
             }
     }
 }
-
+impl FromStr for Uses {
+    type Err = String;
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "rust" => Ok(Uses::Rust),
+            "java" => Ok(Uses::Java),
+            "python" => Ok(Uses::Python),
+            "unity" => Ok(Uses::Unity),
+            "arduino" => Ok(Uses::Arduino),
+            "ros2" => Ok(Uses::ROS2),
+            _ => Err(format!("unknown: {s}")),
+        }
+    }
+}
+impl fmt::Display for Uses {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let s = match self {
+            Uses::Rust => "rust",
+            Uses::Java => "java",
+            Uses::Python => "python",
+            Uses::Unity => "unity",
+            Uses::Arduino => "arduino",
+            Uses::ROS2 => "ros2",
+        };
+        write!(f, "{s}")
+    }
+}
 pub const USE_SECTIONS: &[&str] = &[
     "このサイト、Discordボット",
     "Minecraft の Mod・アドオン",

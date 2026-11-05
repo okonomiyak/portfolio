@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-const MAIN_CSS: Asset = asset!("/styles/main.scss");
+use crate::data::MAIN_CSS;
 
 /// Shared navbar component.
 #[component]

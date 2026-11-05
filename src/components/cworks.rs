@@ -1,7 +1,6 @@
 use dioxus::prelude::*;
-use crate::data::Uses;
+use crate::data::{MAIN_CSS, Uses};
 
-const MAIN_CSS: Asset = asset!("/styles/main.scss");
 const IMGS: [Asset;6] = [
     asset!("/assets/img/rust.svg"),
     asset!("/assets/img/java.svg"),

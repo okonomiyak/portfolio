@@ -1,7 +1,5 @@
 use dioxus::prelude::*;
-use crate::Route;
-
-const MAIN_CSS: Asset = asset!("/styles/main.scss");
+use crate::{Route, data::{MAIN_CSS, Uses}};
 
 /// Shared navbar component.
 #[component]
@@ -15,7 +13,8 @@ pub fn Navbar() -> Element {
             {
                 class: "links",
                 Link { to: Route::Home {}, "Home" }
-                Link { to: Route::Blog { id: 1 },"Blog" }
+                Link { to: Route::Work {}, "Work" }
+                //Link { to: Route::WorkDetail { lan: Uses::Rust },"Works" }
             }
         }
 
