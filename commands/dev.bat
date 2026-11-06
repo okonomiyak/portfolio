@@ -7,7 +7,7 @@ rem         set INTERVAL=3 && dev.bat   (間隔を秒で変更。デフォルト
 set "FILE=styles\main.scss"
 if "%INTERVAL%"=="" set "INTERVAL=100"
 
-start "scss-touch" /min cmd /c "for /l %%i in (0,0,1) do (timeout /t %INTERVAL% /nobreak >nul & copy /b %FILE% +,, >nul)"
+start "scss-touch" /min powershell -NoProfile -Command "$Host.UI.RawUI.WindowTitle='scss-touch'; while ($true) { Start-Sleep %INTERVAL%; (Get-Item '%FILE%').LastWriteTime = Get-Date }"
 
 dx serve %*
 
