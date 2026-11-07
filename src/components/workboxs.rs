@@ -1,10 +1,10 @@
 use dioxus::prelude::*;
-use crate::{Route, Uses, data::MAIN_CSS};
+use crate::{Route, Langs, data::MAIN_CSS};
 
 
 // to_vec()で配列からVecに
 #[component]
-pub fn WorkBoxs(abouts:Vec<Uses>,imgs:Vec<Asset>) -> Element{
+pub fn WorkBoxs(abouts:Vec<Langs>,imgs:Vec<Asset>) -> Element{
     rsx!{
         document::Stylesheet { href: MAIN_CSS }
         div {
@@ -14,7 +14,7 @@ pub fn WorkBoxs(abouts:Vec<Uses>,imgs:Vec<Asset>) -> Element{
                     class:"box",
                     to: Route::WorkDetail { lan: lan },
                     img { src: imgs[i], alt: "..." },
-                    "{Uses::name(&lan)}" 
+                    "{Langs::name(&lan)}" 
                 }
             }
         }

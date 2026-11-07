@@ -1,10 +1,10 @@
 use dioxus::prelude::*;
-use crate::{Route, Uses, data::{LUNG_IMGS, MAIN_CSS}};
+use crate::{Route, Langs, data::{LUNG_IMGS, MAIN_CSS}};
 
 #[component]
 pub fn Cworks() -> Element {
     let mut count = use_signal(|| 0);
-    let langs: Vec<_> = (0..6).map(Uses::call_use).collect();
+    let langs: Vec<_> = (0..6).map(Langs::call_use).collect();
     let last = langs.len() as i32 - 1;
     let text = move |i: i32| {
         if i == count() { "●" } else { "○" }
@@ -36,8 +36,8 @@ pub fn Cworks() -> Element {
                         id: "slide-{i}",
                         class: "slide",
                         to: Route::WorkDetail { lan: *lan },
-                        h1 {"{Uses::name(lan).to_string()}"}
-                        p { "{Uses::call_sections(lan)}" }
+                        h1 {"{Langs::name(lan).to_string()}"}
+                        p { "{Langs::call_sections(lan)}" }
                         img { src: LUNG_IMGS[i], alt: "..." }
                     }
                 }

@@ -6,7 +6,7 @@ use components::{Navbar,PageNotFound};
 use dioxus::prelude::*;
 use views::{Home,WorkDetail,Work};
 
-use crate::data::Uses;
+use crate::data::Langs;
 
 #[derive(Routable, Clone, PartialEq)]
 #[rustfmt::skip]
@@ -17,7 +17,7 @@ enum Route {
         #[route("/work")]
         Work {},
         #[route("/works/:lan")]
-        WorkDetail { lan: Uses },
+        WorkDetail { lan: Langs },
     #[end_layout]
     #[route("/:..route")]
     PageNotFound { route: Vec<String> },   // 必ず最後
