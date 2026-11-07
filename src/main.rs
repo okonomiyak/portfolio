@@ -4,7 +4,7 @@ mod data;
 
 use components::{Navbar,PageNotFound};
 use dioxus::prelude::*;
-use views::{Home,WorkDetail,Work};
+use views::{Home,WorkDetail,Stack};
 
 use crate::data::Langs;
 
@@ -14,8 +14,8 @@ enum Route {
     #[layout(Navbar)]
         #[route("/")]
         Home {},
-        #[route("/work")]
-        Work {},
+        #[route("/Stack")]
+        Stack {},
         #[route("/works/:lan")]
         WorkDetail { lan: Langs },
     #[end_layout]

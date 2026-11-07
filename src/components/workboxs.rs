@@ -8,7 +8,7 @@ pub fn WorkBoxs(abouts:Vec<Langs>,imgs:Vec<Asset>) -> Element{
     rsx!{
         document::Stylesheet { href: MAIN_CSS }
         div {
-            class:"boxs",
+            class:"workboxs",
             for (i,lan) in abouts.into_iter().enumerate(){
                 Link { 
                     class:"box",

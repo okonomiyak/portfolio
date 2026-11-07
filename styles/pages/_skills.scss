@@ -1,0 +1,15 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+
+#Skills {
+    text-align: center;
+    padding-inline: 16px;                     // 画面の端に、くっつかないように
+
+    .header {
+        text-align: left;
+        h1 {
+            margin: 20px 10%;
+            font-size: fluid(28px, 80px, 320px, 800px);
+        }
+    }
+}

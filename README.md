@@ -127,3 +127,6 @@ GitHub Actions のワークフロー内で自動実行されるため、手動�
 
 - `dioxus-cli` のバージョンは `Cargo.toml` の `dioxus` クレートのバージョンと揃える。ずれると `dx` が起動時に「dx and dioxus versions are incompatible」という警告を出し、`.rs`/`styles/` の変更を保存しても自動リビルドが走らなくなることがある。症状としては「コードやスタイルを直したのにブラウザに反映されない」ので、その場合はまず `dioxus-cli` のバージョンを揃えるか、`dx serve` を再起動してフルビルドさせる。
 - 画像などのアセットが表示されない場合は、`base_path` の設定漏れを疑う。
+
+## 使用物
+> アイコン: Simple Icons、Devicon

@@ -13,7 +13,7 @@ pub fn Navbar() -> Element {
             {
                 class: "links",
                 Link { to: Route::Home {}, "Home" }
-                Link { to: Route::Work {}, "Work" }
+                Link { to: Route::Stack {}, "Stack" }
             }
         }
 

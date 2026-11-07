@@ -5,7 +5,7 @@ rem 使い方: dev.bat [dx serve の引数...]
 rem         set INTERVAL=3 && dev.bat   (間隔を秒で変更。デフォルト100秒)
 
 set "FILE=styles\main.scss"
-if "%INTERVAL%"=="" set "INTERVAL=100"
+if "%INTERVAL%"=="" set "INTERVAL=20"
 
 start "scss-touch" /min powershell -NoProfile -Command "$Host.UI.RawUI.WindowTitle='scss-touch'; while ($true) { Start-Sleep %INTERVAL%; (Get-Item '%FILE%').LastWriteTime = Get-Date }"
 
