@@ -1,14 +1,5 @@
 use dioxus::prelude::*;
-use crate::data::{MAIN_CSS, Uses};
-
-const IMGS: [Asset;6] = [
-    asset!("/assets/img/rust.svg"),
-    asset!("/assets/img/java.svg"),
-    asset!("/assets/img/python.svg"),
-    asset!("/assets/img/unity.svg"),
-    asset!("/assets/img/arduino.svg"),
-    asset!("/assets/img/ros2.svg")
-    ];
+use crate::{Route, Uses, data::{LUNG_IMGS, MAIN_CSS}};
 
 #[component]
 pub fn Cworks() -> Element {
@@ -40,14 +31,14 @@ pub fn Cworks() -> Element {
                     }
                 },
                 for (i, lan) in langs.iter().enumerate() {
-                    a {
+                    Link {
                         key: "{i}",
                         id: "slide-{i}",
                         class: "slide",
-                        href:"",
+                        to: Route::WorkDetail { lan: *lan },
                         h1 {"{Uses::name(lan).to_string()}"}
                         p { "{Uses::call_sections(lan)}" }
-                        img { src: IMGS[i], alt: "..." }
+                        img { src: LUNG_IMGS[i], alt: "..." }
                     }
                 }
             }

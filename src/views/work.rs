@@ -1,14 +1,7 @@
 use dioxus::{prelude::*};
 
-use crate::{Route, data::{MAIN_CSS, Uses}};
-const IMGS: [Asset;6] = [
-    asset!("/assets/img/rust.svg"),
-    asset!("/assets/img/java.svg"),
-    asset!("/assets/img/python.svg"),
-    asset!("/assets/img/unity.svg"),
-    asset!("/assets/img/arduino.svg"),
-    asset!("/assets/img/ros2.svg")
-    ];
+use crate::{components::WorkBoxs, data::{MAIN_CSS, LUNG_IMGS,Uses}};
+
 /// Home page
 #[component]
 pub fn Work() -> Element {
@@ -21,16 +14,9 @@ pub fn Work() -> Element {
                 class:"header",
                 h1 {"Work"}
             }
-            div {
-                class:"boxs",
-                for (i,lan) in langs.into_iter().enumerate(){
-                    Link { 
-                        class:"box",
-                        to: Route::WorkDetail { lan: lan },
-                        img { src: IMGS[i], alt: "..." },
-                        "{Uses::name(&lan)}" 
-                    }
-                }
+            WorkBoxs {
+                abouts: langs,
+                imgs: LUNG_IMGS.to_vec(),
             }
         }
     }

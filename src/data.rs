@@ -11,6 +11,7 @@ pub enum Uses {
     Arduino,
     ROS2,
 }
+
 impl Uses {
     pub fn call_sections(&self) -> &str {
         let i = match self {
@@ -71,6 +72,16 @@ impl fmt::Display for Uses {
         write!(f, "{s}")
     }
 }
+
+pub const LUNG_IMGS: [Asset; 6] = [
+    asset!("/assets/img/rust.svg"),
+    asset!("/assets/img/java.svg"),
+    asset!("/assets/img/python.svg"),
+    asset!("/assets/img/unity.svg"),
+    asset!("/assets/img/arduino.svg"),
+    asset!("/assets/img/ros2.svg"),
+];
+
 pub const USE_SECTIONS: &[&str] = &[
     "このサイト、Discordボット",
     "Minecraft の Mod・アドオン",

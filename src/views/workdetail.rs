@@ -8,8 +8,11 @@ pub fn WorkDetail(lan: Uses) -> Element {
     rsx! {
         document::Stylesheet { href: MAIN_CSS }
         div {
-            id:"works",
-            h1 { "Works " {lan.name()} }
+            id:"work",
+            div {
+                class:"header",
+                h1 {"Works " {lan.name()} }
+            }
         }
     }
 }
