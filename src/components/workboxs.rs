@@ -12,7 +12,7 @@ pub fn WorkBoxs(items: Vec<Stack>,on_link: bool) -> Element{
             for item in items{
                 if on_link {
                     Link { 
-                        class:"box",
+                        class:"linkbox",
                         to: Route::WorkDetail { lan: item },
                         img { src: item.img(), alt: "..." },
                         "{item.name()}" 
@@ -20,7 +20,7 @@ pub fn WorkBoxs(items: Vec<Stack>,on_link: bool) -> Element{
                 }
                 else {
                     div { 
-                        class:"box",
+                        class:"divbox",
                         img { src: item.img(), alt: "..." },
                         "{item.name()}" 
                     }

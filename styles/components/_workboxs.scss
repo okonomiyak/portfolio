@@ -9,7 +9,7 @@
     max-width: 880px;
     margin: 40px auto 0;
 
-    .box {
+    .linkbox {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,12 +30,36 @@
         &:hover img { opacity: 1; transform: translateY(-4px); }
         &:focus-visible { outline: 2px solid $text; outline-offset: 6px; border-radius: 8px; }
     }
+    .divbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;                        // アイコンと文字の間
+        font-size: fluid(14px, 22px, 320px, 768px);
+        color: $text;
+        text-decoration: none;
+
+        img {
+            width: fluid(48px, 64px, 320px, 768px);
+            height: fluid(48px, 64px, 320px, 768px);
+            object-fit: contain;
+            opacity: 0.85;
+            filter: brightness(0);        // 黒一色にする
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        &:focus-visible { outline: 2px solid $text; outline-offset: 6px; border-radius: 8px; }    
+    }
 
 
     
     @media (prefers-reduced-motion: reduce) {
-        .boxs .box img { transition: none; }
-        .boxs .box:hover img { transform: none; }
+        .boxs .linkbox img { transition: none; }
+        .boxs .linkbox:hover img { transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .boxs .divbox img { transition: none; }
+        .boxs .divbox:hover img { transform: none; }
     }
 }
 

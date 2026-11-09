@@ -19,38 +19,46 @@ pub struct StackInfo {
 #[derive(Clone, Copy, PartialEq)] 
 pub enum Stack {
     //Langs
-    Rust,Java,Python,Unity,Arduino,ROS2,
+    Rust,Java,Python,Unity,Arduino,Javascript,
     //Use
-    Git,Github,Proxmox,
+    ROS2,Kicad,Git,Github,Proxmox,Docker,Arch,
 }
 
 impl Stack {
     pub const LANGS: [Stack; 6] = [
         Stack::Rust, Stack::Java, Stack::Python,
-        Stack::Unity, Stack::Arduino, Stack::ROS2,
+        Stack::Unity, Stack::Arduino, Stack::Javascript,
     ];
-    pub const TOOLS: [Stack; 3] = [Stack::Git, Stack::Github, Stack::Proxmox];
+    pub const TOOLS: [Stack; 7] = [Stack::ROS2,Stack::Kicad,Stack::Git, Stack::Github, Stack::Proxmox,Stack::Arch,Stack::Docker,];
 
         pub fn info(self) -> StackInfo {
             match self {
                 Stack::Rust => StackInfo { name: "Rust", slug: "rust",
-                    img: asset!("/assets/img/rust.svg"), desc: "このサイト、Discordボット" },
+                    img: asset!("/assets/img/lang/rust.svg"), desc: "このサイト、Discordボット" },
                 Stack::Java => StackInfo { name: "Java", slug: "java",
-                    img: asset!("/assets/img/java.svg"), desc: "Minecraft の Mod・アドオン" },
+                    img: asset!("/assets/img/lang/java.svg"), desc: "Minecraft の Mod・アドオン" },
                 Stack::Python => StackInfo { name: "Python", slug: "python",
-                    img: asset!("/assets/img/python.svg"), desc: "自作ニューラルネットワーク" },
+                    img: asset!("/assets/img/lang/python.svg"), desc: "自作ニューラルネットワーク" },
                 Stack::Unity => StackInfo { name: "Unity", slug: "unity",
-                    img: asset!("/assets/img/unity.svg"), desc: "(C#) ブラウザで遊べるレースゲーム" },
+                    img: asset!("/assets/img/lang/unity.svg"), desc: "(C#) ブラウザで遊べるレースゲーム" },
                 Stack::Arduino => StackInfo { name: "Arduino", slug: "arduino",
-                    img: asset!("/assets/img/arduino.svg"), desc: "ESP32 + ディスプレイ" },
+                    img: asset!("/assets/img/lang/arduino.svg"), desc: "ESP32 + ディスプレイ" },
+                Stack::Javascript => StackInfo { name: "Javascript", slug: "javascript",
+                    img: asset!("/assets/img/lang/javascript.svg"), desc: "Kubejsやwebサイト" },
                 Stack::ROS2 => StackInfo { name: "ROS2", slug: "ros2",
-                    img: asset!("/assets/img/ros2.svg"), desc: "ロボットの制御" },
+                    img: asset!("/assets/img/use/ros2.svg"), desc: "" },
+                Stack::Kicad => StackInfo { name: "Kicad", slug: "kicad",
+                    img: asset!("/assets/img/use/kicad.svg"), desc: "" },
                 Stack::Git => StackInfo { name: "Git", slug: "git",
                     img: asset!("/assets/img/use/git.svg"), desc: "" },
                 Stack::Github => StackInfo { name: "Github", slug: "github",
                     img: asset!("/assets/img/use/github.svg"), desc: "" },
                 Stack::Proxmox => StackInfo { name: "Proxmox", slug: "proxmox",
                     img: asset!("/assets/img/use/proxmox.svg"), desc: "" },
+                Stack::Arch => StackInfo { name: "Arch", slug: "arch",
+                    img: asset!("/assets/img/use/arch.svg"), desc: "" },
+                Stack::Docker => StackInfo { name: "Docker", slug: "docker",
+                    img: asset!("/assets/img/use/docker.svg"), desc: "" },
             }
         }
         pub fn name(self) -> &'static str { self.info().name }
@@ -152,4 +160,10 @@ pub const PROJECTS: &[Projects] = &[
         url: "https://colab.research.google.com/drive/1s8RHL4h316pDuKj6tsQbAZ9ivsv1I5xX?usp=sharing&classId=bfb5d42f-49e1-49a9-a762-5922349606fb&assignmentId=070d88ea-a294-43a5-8615-27e77100fdf7&submissionId=de72091b-e1af-8fc8-56cd-1511389bc090",
         lang:&[Stack::Python],
     },
+    Projects {
+        title:"マインクラフト 投票スクリプト",
+        desc:"kubejsで投票を行うスクリプト",
+        url: "https://github.com/okonomiyak/minecraft-vote-kubejs",
+        lang:&[Stack::Javascript],
+    }
 ];
