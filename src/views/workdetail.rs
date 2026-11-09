@@ -1,10 +1,10 @@
 use dioxus::{prelude::*};
 
-use crate::data::{MAIN_CSS, Langs};
+use crate::data::{MAIN_CSS, Stack};
 
 /// Home page
 #[component]
-pub fn WorkDetail(lan: Langs) -> Element {
+pub fn WorkDetail(lan: Stack) -> Element {
     rsx! {
         document::Stylesheet { href: MAIN_CSS }
         div {

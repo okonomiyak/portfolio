@@ -1,20 +1,29 @@
 use dioxus::prelude::*;
-use crate::{Route, Langs, data::MAIN_CSS};
+use crate::{Route, Stack, data::MAIN_CSS};
 
 
 // to_vec()で配列からVecに
 #[component]
-pub fn WorkBoxs(abouts:Vec<Langs>,imgs:Vec<Asset>) -> Element{
+pub fn WorkBoxs(items: Vec<Stack>,on_link: bool) -> Element{
     rsx!{
         document::Stylesheet { href: MAIN_CSS }
         div {
             class:"workboxs",
-            for (i,lan) in abouts.into_iter().enumerate(){
-                Link { 
-                    class:"box",
-                    to: Route::WorkDetail { lan: lan },
-                    img { src: imgs[i], alt: "..." },
-                    "{Langs::name(&lan)}" 
+            for item in items{
+                if on_link {
+                    Link { 
+                        class:"box",
+                        to: Route::WorkDetail { lan: item },
+                        img { src: item.img(), alt: "..." },
+                        "{item.name()}" 
+                    }
+                }
+                else {
+                    div { 
+                        class:"box",
+                        img { src: item.img(), alt: "..." },
+                        "{item.name()}" 
+                    }
                 }
             }
         }

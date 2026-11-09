@@ -4,9 +4,9 @@ mod data;
 
 use components::{Navbar,PageNotFound};
 use dioxus::prelude::*;
-use views::{Home,WorkDetail,Stack};
+use views::{Home,WorkDetail,Stacks};
 
-use crate::data::Langs;
+use crate::data::Stack;
 
 #[derive(Routable, Clone, PartialEq)]
 #[rustfmt::skip]
@@ -15,9 +15,9 @@ enum Route {
         #[route("/")]
         Home {},
         #[route("/Stack")]
-        Stack {},
+        Stacks {},
         #[route("/works/:lan")]
-        WorkDetail { lan: Langs },
+        WorkDetail { lan: Stack },
     #[end_layout]
     #[route("/:..route")]
     PageNotFound { route: Vec<String> },   // 必ず最後

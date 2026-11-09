@@ -1,11 +1,10 @@
 use dioxus::{prelude::*};
 
-use crate::{components::WorkBoxs, data::{MAIN_CSS, LUNG_IMGS,Langs}};
+use crate::{components::WorkBoxs, data::{MAIN_CSS, Stack}};
 
 /// Home page
 #[component]
-pub fn Stack() -> Element {
-    let langs: Vec<_> = (0..6).map(Langs::call_use).collect();
+pub fn Stacks() -> Element {
     rsx! {
         document::Stylesheet { href: MAIN_CSS }
         div {
@@ -14,14 +13,12 @@ pub fn Stack() -> Element {
                 class:"header",
                 h1 {"skills"}
             }
-            WorkBoxs {
-                abouts: langs,
-                imgs: LUNG_IMGS.to_vec(),
-            }
+            WorkBoxs { items:Stack::LANGS.to_vec(),on_link:true}
             div {
                 class:"header",
-                h1{"Use"}
+                h1{"Tools"}
             }
+            WorkBoxs { items:Stack::TOOLS.to_vec(),on_link:false}
         }
     }
 }

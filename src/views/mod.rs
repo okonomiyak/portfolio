@@ -1,7 +1,7 @@
 mod home;
-mod stack;
+mod stacks;
 mod workdetail;
 
 pub use home::Home;
-pub use stack::Stack;
+pub use stacks::Stacks;
 pub use workdetail::WorkDetail;
