@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/functions" as *;
+
+#notfound {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: fluid(64px, 160px, 320px, 800px);
+    line-height: 1;
+  }
+
+  .path {
+    color: $subtext;
+    word-break: break-all;   // 長いURLがはみ出さないように
+  }
+}

@@ -9,7 +9,10 @@ pub fn Footer() -> Element {
         document::Stylesheet { href: MAIN_CSS }
         div {
             id: "footer",
-            "このページはGithubにてGPL3.0でソース公開されています。"
+            a {
+                href:"https://github.com/okonomiyak/portfolio",
+                "このページはGithubにてGPL3.0でソース公開されています。"
+            }
         }
     }
 }

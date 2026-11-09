@@ -2,10 +2,9 @@ mod views;
 mod components;
 mod data;
 
-use components::{Navbar,PageNotFound};
+use components::{Navbar};
 use dioxus::prelude::*;
-use views::{Home,WorkDetail,Stacks};
-
+use views::{Home,WorkDetail,Stacks,PageNotFound};
 use crate::data::Stack;
 
 #[derive(Routable, Clone, PartialEq)]
@@ -18,9 +17,8 @@ enum Route {
         Stacks {},
         #[route("/works/:lan")]
         WorkDetail { lan: Stack },
-    #[end_layout]
-    #[route("/:..route")]
-    PageNotFound { route: Vec<String> },   // 必ず最後
+        #[route("/:..route")]
+        PageNotFound { route: Vec<String> },   // 必ず最後
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
