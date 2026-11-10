@@ -2,9 +2,9 @@ mod views;
 mod components;
 mod data;
 
-use components::{Navbar};
+use components::{Navbar,Footer};
 use dioxus::prelude::*;
-use views::{Home,WorkDetail,Stacks,PageNotFound,ProjectDetail};
+use views::{Home,WorkDetail,Stacks,PageNotFound,ProjectDetail,About};
 use crate::data::Stack;
 
 #[derive(Routable, Clone, PartialEq)]
@@ -13,7 +13,9 @@ enum Route {
     #[layout(Navbar)]
         #[route("/")]
         Home {},
-        #[route("/Stack")]
+        #[route("/about")]
+        About {},
+        #[route("/stack")]
         Stacks {},
         #[route("/works/:lan")]
         WorkDetail { lan: Stack },

@@ -1,0 +1,10 @@
+// styles/base/_layout.scss
+#main {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;   // 余った高さを、中身が取る → フッターが下に押される
+}

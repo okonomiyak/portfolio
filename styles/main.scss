@@ -1,13 +1,15 @@
 @use "abstracts/variables" as *;
 
 @use "base/reset";
+@use "base/layout";
 @use "components/buttons";
-@use "components/navbar";
 @use "components/cworks";
 @use "components/workboxs";
 @use "components/notfound";
+@use "layout/navbar";
 @use "layout/footer";
 @use "pages/home";
 @use "pages/projectdetail";
 @use "pages/skills";
-@use "pages/workdetail"
+@use "pages/workdetail";
+@use "pages/about"
