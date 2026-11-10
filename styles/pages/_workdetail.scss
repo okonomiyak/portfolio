@@ -2,6 +2,9 @@
 @use "../abstracts/functions" as *;
 
 #WorkDetail {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 16px 96px;
   padding-inline: 16px;   // 画面の端にくっつかないように
 
   // 見出しとカードを、同じ幅・同じ中央寄せにする

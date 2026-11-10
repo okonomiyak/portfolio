@@ -4,7 +4,7 @@ mod data;
 
 use components::{Navbar};
 use dioxus::prelude::*;
-use views::{Home,WorkDetail,Stacks,PageNotFound};
+use views::{Home,WorkDetail,Stacks,PageNotFound,ProjectDetail};
 use crate::data::Stack;
 
 #[derive(Routable, Clone, PartialEq)]
@@ -17,6 +17,8 @@ enum Route {
         Stacks {},
         #[route("/works/:lan")]
         WorkDetail { lan: Stack },
+        #[route("/works/:lan/:slug")]
+        ProjectDetail { lan: Stack, slug: String },
         #[route("/:..route")]
         PageNotFound { route: Vec<String> },   // 必ず最後
 }

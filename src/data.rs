@@ -3,11 +3,15 @@ use std::{fmt, str::FromStr};
 
 #[derive(Clone, PartialEq)]
 pub struct Projects {
+    pub slug: &'static str,          // URL用(重複しない英数字とハイフン)
     pub title: &'static str,
-    pub desc: &'static str,
-    pub url: &'static str,
+    pub desc: &'static str,          // カード用の短い説明
+    pub body: &'static str,          // 詳細ページ用の説明
+    pub url: &'static str,           // GitHub
+    pub img: Option<Asset>,          // 画像がない作品もあるので Option
     pub lang: &'static [Stack],
 }
+
 #[derive(Clone, Copy, PartialEq)]
 pub struct StackInfo {
     pub name: &'static str,
@@ -23,7 +27,11 @@ pub enum Stack {
     //Use
     ROS2,Kicad,Git,Github,Proxmox,Docker,Arch,
 }
-
+impl Projects {
+    pub fn find(lan:Stack,slug:&str) -> Option<&'static Projects> {
+        PROJECTS.iter().find(|p| p.slug == slug && p.lang.contains(&lan))
+    }
+ }
 impl Stack {
     pub const LANGS: [Stack; 6] = [
         Stack::Rust, Stack::Java, Stack::Python,
@@ -92,78 +100,112 @@ pub const MAIN_CSS: Asset = asset!("/styles/main.scss");
 
 pub const PROJECTS: &[Projects] = &[
     Projects {
+        slug:"portfolio",
         title:"Portfolio",
         desc:"このさいと",
+        body:"dixousを利用し、GithubPageで公開する自分のポートフォリオ",
         url: "https://okonomiyak.github.io/portfolio",
+        img: None,
         lang:&[Stack::Rust],
     },
     Projects {
+        slug:"musicyomiagebots",
         title:"読み上げ&音楽再生bot",
-        desc:"DiscordのVCで読み上げと音楽の再生ができるdiscordbot",
+        desc:"色々再生discordbot",
+        body:"DiscordのVCで読み上げと音楽の再生ができるdiscordbot",
         url: "https://github.com/okonomiyak/yomiage",
+        img:None,
         lang:&[Stack::Rust],
     },
+    // ...(Portfolio と 読み上げbot も、同じ形で slug / body / img を足してください)
     Projects {
-        title:"LifeGame",
-        desc:"Linuxターミナル上で動作するLifeGane",
-        url: "https://github.com/okonomiyak/LifeGame-InRust.git",
-        lang:&[Stack::Rust],
+        slug: "lifegame",
+        title: "LifeGame",
+        desc: "Linuxターミナル上で動作するLifeGame",
+        body: "Rustで書いた、ライフゲームです。Linuxのターミナル上で動きます。",
+        url: "https://github.com/okonomiyak/LifeGame-InRust",
+        img: None,
+        lang: &[Stack::Rust],
     },
     Projects {
-        title:"discord_task_bot",
-        desc:"タスクの管理discordbot Web付き ",
+        slug: "discord-task-bot",
+        title: "discord_task_bot",
+        desc: "タスクの管理discordbot Web付き",
+        body: "Discordからタスクを管理できるbotです。Webからも見られるようにしています。",
         url: "https://github.com/okonomiyak/discord_task_bot",
-        lang:&[Stack::Rust],
+        img: None,
+        lang: &[Stack::Rust],
     },
     Projects {
-        title:"squadtp",
-        desc:"BF風FPS用mod 分隊機能",
+        slug: "squadtp",
+        title: "squadtp",
+        desc: "BF風FPS用mod 分隊機能",
+        body: "BF風FPS用modの分隊機能です。最大4人の分隊を組んで、仲間の位置へのテレポートや、仲間の近くへのスポーンができます。JourneyMapと連携しています。",
         url: "https://github.com/okonomiyak/squadtp",
-        lang:&[Stack::Java],
+        img: None,
+        lang: &[Stack::Java],
     },
-
     Projects {
-        title:"squadtp-conquest",
-        desc:"BF風FPS用mod ゲーム用",
+        slug: "squadtp-conquest",
+        title: "squadtp-conquest",
+        desc: "BF風FPS用mod ゲーム用",
+        body: "BF風FPS用modのうち、ゲームとして遊ぶための機能です。",
         url: "https://github.com/okonomiyak/squadtp-conquest",
-        lang:&[Stack::Java],
+        img: None,
+        lang: &[Stack::Java],
     },
-
     Projects {
-        title:"classloadout",
-        desc:"BF風FPS用mod ロードアウト管理",
+        slug: "classloadout",
+        title: "classloadout",
+        desc: "BF風FPS用mod ロードアウト管理",
+        body: "BF風FPS用modの、ロードアウト(装備のセット)を管理する機能です。",
         url: "https://github.com/okonomiyak/classloadout",
-        lang:&[Stack::Java],
+        img: None,
+        lang: &[Stack::Java],
     },
     Projects {
-        title:"ModRoster",
-        desc:"マルチプレイmod管理用",
+        slug: "modroster",
+        title: "ModRoster",
+        desc: "マルチプレイmod管理用",
+        body: "マルチプレイで、参加者のmod構成を管理するためのmodです。",
         url: "https://github.com/okonomiyak/ModRoster",
-        lang:&[Stack::Java],
+        img: None,
+        lang: &[Stack::Java],
     },
-
     Projects {
-        title:"SBW-Extra-Armory",
-        desc:"SBWアドオンmod",
+        slug: "sbw-extra-armory",
+        title: "SBW-Extra-Armory",
+        desc: "SBWアドオンmod",
+        body: "SuperbWarfare(SBW)の追加武器パックです。グレネードランチャー付きカービン、ナイフ、グレネード、SRAWなどを追加します。",
         url: "https://github.com/okonomiyak/SBW-Extra-Armory",
-        lang:&[Stack::Java],
+        img: None,
+        lang: &[Stack::Java],
     },
     Projects {
-        title:"Campus Sky Attack",
-        desc:"高専歳用ゲーム(unity) ランキング付き(rust/api)",
+        slug: "campus-sky-attack",
+        title: "Campus Sky Attack",
+        desc: "高専祭用ゲーム(unity) ランキング付き(rust/api)",
+        body: "高専祭向けに作った、ブラウザで遊べるUnityのゲームです。ランキングは、Rust製のAPIで管理しています。",
         url: "https://race.iwa.me.uk",
-        lang:&[Stack::Unity,Stack::Rust],
+        img: None,
+        lang: &[Stack::Unity, Stack::Rust],
     },
     Projects {
-        title:"ニューラルネットワーク",
-        desc:"MNISというデータセットからフルスクラッチのニューラルネットワークによって分類を行うスクリプト",
-        url: "https://colab.research.google.com/drive/1s8RHL4h316pDuKj6tsQbAZ9ivsv1I5xX?usp=sharing&classId=bfb5d42f-49e1-49a9-a762-5922349606fb&assignmentId=070d88ea-a294-43a5-8615-27e77100fdf7&submissionId=de72091b-e1af-8fc8-56cd-1511389bc090",
-        lang:&[Stack::Python],
+        slug: "neural-network",
+        title: "ニューラルネットワーク",
+        desc: "MNISTのデータセットを、フルスクラッチのニューラルネットワークで分類するスクリプト",
+        body: "MNISTのデータセットを、フルスクラッチで作ったニューラルネットワークで分類するスクリプトです。",
+        url: "https://colab.research.google.com/drive/1s8RHL4h316pDuKj6tsQbAZ9ivsv1I5xX?usp=sharing",
+        img: None,
+        lang: &[Stack::Python],
     },
     Projects {
-        title:"マインクラフト 投票スクリプト",
-        desc:"kubejsで投票を行うスクリプト",
+        slug: "minecraft-vote-kubejs",
+        title: "マインクラフト 投票スクリプト",
+        desc: "kubejsで投票を行うスクリプト",
+        body: "KubeJSで書いた、Minecraft内で投票を行うスクリプトです。",
         url: "https://github.com/okonomiyak/minecraft-vote-kubejs",
-        lang:&[Stack::Javascript],
-    }
+        img: None,
+        lang: &[Stack::Javascript],
+    },
 ];

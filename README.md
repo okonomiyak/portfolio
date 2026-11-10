@@ -10,47 +10,6 @@ Dioxus 0.7 (Rust) で作成した個人ポートフォリオサイト。GitHub P
 - SCSS(`dx` のアセットパイプラインが内蔵の [grass](https://github.com/connorskees/grass) で自動コンパイル。別途 Node.js や `sass` コマンドは不要)
 - GitHub Actions + GitHub Pages でのホスティング
 
-## プロジェクト構成
-
-```
-portfolio/
-├─ src/
-│  ├─ main.rs            # エントリーポイント。Router とルート定義 (Home / Blog)
-│  ├─ data.rs             # Works セクションで使う技術スタックのデータ
-│  ├─ components/
-│  │  ├─ navbar.rs        # 共通ナビバー(レイアウト、Outlet を含む)
-│  │  ├─ footer.rs        # 共通フッター
-│  │  ├─ cworks.rs        # 使用技術を横スクロールで見せるスライダー(id="cworks")
-│  │  ├─ hero.rs          # (未使用。テンプレート由来)
-│  │  └─ mod.rs
-│  └─ views/
-│     ├─ home.rs          # トップページ(Hero + 自己紹介 + Cworks)
-│     ├─ works.rs         # 作業中の Works ページ(未配線・プレースホルダー)
-│     └─ mod.rs
-├─ styles/                      # SCSS ソース。dx が main.scss を起点に自動コンパイルする
-│  ├─ main.scss                  # 各 partial を @use するだけのエントリーファイル
-│  ├─ abstracts/
-│  │  ├─ _variables.scss          # 色・フォント・サイズなどの変数
-│  │  └─ _functions.scss          # fluid() など、画面幅に応じて滑らかに変化する値を作る関数
-│  ├─ base/
-│  │  └─ _reset.scss              # html/body のリセットと基本フォント
-│  ├─ components/
-│  │  ├─ _buttons.scss            # .bluebutton / .whitebutton
-│  │  ├─ _navbar.scss
-│  │  └─ _cworks.scss
-│  ├─ layout/
-│  │  └─ _footer.scss
-│  └─ pages/
-│     ├─ _home.scss
-│     └─ _work.scss               # Works ページ用(未着手)
-├─ assets/
-│  ├─ favicon.ico
-│  └─ img/                 # 技術ロゴなどの画像
-├─ Cargo.toml               # Rust 依存とフィーチャーフラグ
-├─ Dioxus.toml               # dx のビルド設定(base_path など)
-└─ .github/workflows/deploy.yml  # GitHub Pages への自動デプロイ
-```
-
 ## 必要なツール
 
 - Rust ツールチェーン + `wasm32-unknown-unknown` target
@@ -65,7 +24,16 @@ portfolio/
 Node.js や npm は不要。SCSS は `asset!("/styles/main.scss")` 経由で `dx` に直接渡しており、`dx serve`/`dx bundle` が内部の `grass` でコンパイルする。
 
 ## 開発用ビルド
+SCSSを一定間隔保存させる場合
+```sh
+./commands/dev.sh
+```
 
+```bat
+./commands/dev.bat
+```
+
+手動実行
 ```sh
 dx serve
 ```

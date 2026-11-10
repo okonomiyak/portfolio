@@ -17,3 +17,20 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+    // パンくず(Stack / 言語名 / 作品名)
+.crumbs {
+    max-width: 760px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: $subtext;
+
+    a {
+        color: inherit;                        // 親の色($subtext)をそのまま使う
+        text-decoration: none;
+        &:hover { text-decoration: underline; }
+    }
+}

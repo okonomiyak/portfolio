@@ -1,6 +1,6 @@
 use dioxus::{prelude::*};
 
-use crate::data::{MAIN_CSS, Stack};
+use crate::{Route, data::{MAIN_CSS, Stack}};
 
 /// Home page
 #[component]
@@ -9,6 +9,11 @@ pub fn WorkDetail(lan: Stack) -> Element {
         document::Stylesheet { href: MAIN_CSS }
         div {
             id:"WorkDetail",
+            nav { class: "crumbs",
+                Link { to: Route::Stacks {}, "Stack" }
+                " / "
+                "{lan.name()}"
+            }
             div {
                 class:"header",
                 h1 {"Works " {lan.name()} }
@@ -20,7 +25,7 @@ pub fn WorkDetail(lan: Stack) -> Element {
                         class:"box",
                         h2 { "{p.title}" }
                         p { "{p.desc}" }
-                        a { href: "{p.url}", "見る >" }
+                        Link { to: Route::ProjectDetail { lan, slug: p.slug.to_string() }, "見る >" }
                     }
                 }
             }
