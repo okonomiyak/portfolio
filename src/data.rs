@@ -12,6 +12,16 @@ pub struct Projects {
     pub lang: &'static [Stack],
 }
 
+#[derive(Clone, PartialEq)]
+pub struct News {
+    pub slug: &'static str,
+    pub title: &'static str,
+    pub desc: &'static str,
+    pub date: &'static str,
+    pub img: Option<Asset>,
+    pub projectslug: &'static [&'static str],
+}
+
 #[derive(Clone, Copy, PartialEq)]
 pub struct StackInfo {
     pub name: &'static str,
@@ -27,11 +37,27 @@ pub enum Stack {
     //Use
     ROS2,Kicad,Git,Github,Proxmox,Docker,Arch,
 }
+
 impl Projects {
     pub fn find(lan:Stack,slug:&str) -> Option<&'static Projects> {
         PROJECTS.iter().find(|p| p.slug == slug && p.lang.contains(&lan))
     }
- }
+}
+
+impl News {
+    pub fn new_sort(mut selfs:Vec<Self>) -> Vec<Self> {
+        selfs.sort_by(|a,b| b.date.cmp(&a.date));
+        selfs
+    }
+    pub fn check_projects(self) -> impl Iterator<Item = &'static Projects>{
+        let slug = self.projectslug;
+        PROJECTS.iter().filter(move | p | slug.contains(&p.slug))
+    }
+    pub fn find(slug:&str) -> Option<&'static Projects> {
+        PROJECTS.iter().find(|p| p.slug == slug)
+    }
+}
+
 impl Stack {
     pub const LANGS: [Stack; 6] = [
         Stack::Rust, Stack::Java, Stack::Python,
@@ -187,7 +213,7 @@ pub const PROJECTS: &[Projects] = &[
         desc: "高専祭用ゲーム(unity) ランキング付き(rust/api)",
         body: "高専祭向けに作った、ブラウザで遊べるUnityのゲームです。ランキングは、Rust製のAPIで管理しています。",
         url: "https://race.iwa.me.uk",
-        img: Some(asset!("assets/img/screenshot-annotated.png")),
+        img: Some(asset!("assets/img/skyattack.png")),
         lang: &[Stack::Unity, Stack::Rust],
     },
     Projects {
@@ -217,4 +243,15 @@ pub const PROJECTS: &[Projects] = &[
         img: Some(asset!("assets/img/IMG_20261107_0217352.webp")),
         lang: &[Stack::Arduino],
     },
+];
+
+pub const NEWS: &[News] = &[
+    News {
+        slug: "kousen2026",
+        title: "高専祭(2026)",
+        desc:"2026年高専祭 私はレースゲームを作成しました。",
+        date:"2026-11-07",
+        img: None,
+        projectslug: &["campus-sky-attack"],
+    }
 ];

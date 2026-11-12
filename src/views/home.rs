@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 use crate::Route;
-use crate::components::Cworks;
+use crate::components::{Cworks, NewsBoxs};
 use crate::data::MAIN_CSS;
 
 /// Home page
@@ -75,7 +75,11 @@ pub fn Home() -> Element {
                             dd { "Arch Linux (Hyprland) / 自宅サーバー" }
                         }
                     }
-            }   }
+                }   
+            }
+            NewsBoxs {
+                limitnews:2,
+            }
         }
     }
 }

@@ -1,47 +1,42 @@
 use dioxus::prelude::*;
-use crate::{Route, Stack, data::MAIN_CSS};
-use crate::components::Scroll_to;
+use crate::components::scroll_to_child;
 
 #[component]
-pub fn Cworks() -> Element {
-    let mut count = use_signal(|| 0usize);
-    let n = Stack::LANGS.len();
+pub fn Carousel(
+    #[props(into)] id: String,   // ページ内で重複しない名前
+    count: usize,                // スライドの枚数
+    children: Element,           // スライド本体
+) -> Element {
+    let mut current = use_signal(|| 0usize);
+    let track = format!("{id}-track");
 
     rsx! {
-        document::Stylesheet { href: MAIN_CSS }
-        div { id: "cworks",
+        div { id: "{id}", class: "carousel",
             div {
+                id: "{track}",
                 class: "slider",
                 onscroll: move |e| {
                     let total = e.scroll_width() as f64;
-                    if total <= 0.0 {
-                        return;   // 幅がまだ0のときは割り算しない
+                    if total <= 0.0 || count == 0 {
+                        return;
                     }
-                    // 今の位置が「何枚目」か(四捨五入して、最後の番号に収める)
-                    let i = (e.scroll_left() as f64 / total * n as f64).round() as usize;
-                    let i = i.min(n - 1);
-                    if i != count() {   // 番号が変わったときだけ更新
-                        count.set(i);
+                    let i = (e.scroll_left() as f64 / total * count as f64).round() as usize;
+                    let i = i.min(count - 1);
+                    if i != current() {
+                        current.set(i);
                     }
                 },
-                for lan in Stack::LANGS {
-                    Link {
-                        key: "{lan}",
-                        id: "slide-{lan}",
-                        class: "slide",
-                        to: Route::WorkDetail { lan },
-                        h1 { "{lan.name()}" }
-                        p { "{lan.desc()}" }
-                        img { src: lan.img(), alt: "{lan.name()}" }
-                    }
-                }
+                {children}
             }
             div { class: "buttons",
-                for (i, lan) in Stack::LANGS.into_iter().enumerate() {
+                for i in 0..count {
                     button {
-                        key: "{lan}",
-                        onclick: move |_| Scroll_to(&format!("slide-{lan}")),
-                        { if i == count() { "●" } else { "○" } }
+                        key: "{i}",
+                        onclick: {
+                            let track = track.clone();
+                            move |_| scroll_to_child(&track, i)
+                        },
+                        { if i == current() { "●" } else { "○" } }
                     }
                 }
             }
