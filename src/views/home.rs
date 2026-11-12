@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::Footer;
+use crate::Route;
 use crate::components::Cworks;
 use crate::data::MAIN_CSS;
 
@@ -24,15 +24,9 @@ pub fn Home() -> Element {
 
                     div {
                         class: "button",
-                        a { 
+                        Link { 
                             class:"bluebutton",
-                            href: "#about",
-                            onclick: move |evt| {
-                                evt.prevent_default();   // 標準のリンク動作を止める
-                                document::eval(
-                                    r#"document.getElementById("about").scrollIntoView({ behavior: "smooth" });"#,
-                                );
-                            },
+                            to: Route::About {},
                             "詳細"
                         }
                         a {    

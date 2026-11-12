@@ -2,7 +2,7 @@ mod views;
 mod components;
 mod data;
 
-use components::{Navbar,Footer};
+use components::{Navbar};
 use dioxus::prelude::*;
 use views::{Home,WorkDetail,Stacks,PageNotFound,ProjectDetail,About};
 use crate::data::Stack;

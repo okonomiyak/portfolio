@@ -43,18 +43,18 @@ pub fn About() -> Element {
         
             }
         
-            div { class: "stats",
-                img {
-                    src: "https://raw.githubusercontent.com/okonomiyak/okonomiyak/main/generated/top-langs.svg",
-                    alt: "よく使う言語の割合",
-                    loading: "lazy"
-                }
-                img {
-                    src: "https://raw.githubusercontent.com/okonomiyak/okonomiyak/main/generated/stats.svg",
-                    alt: "GitHub の統計",
-                    loading: "lazy"
-                }
-            }   
+            // div { class: "stats",
+            //     img {
+            //         src: "https://raw.githubusercontent.com/okonomiyak/okonomiyak/main/generated/top-langs.svg",
+            //         alt: "よく使う言語の割合",
+            //         loading: "lazy"
+            //     }
+            //     img {
+            //         src: "https://raw.githubusercontent.com/okonomiyak/okonomiyak/main/generated/stats.svg",
+            //         alt: "GitHub の統計",
+            //         loading: "lazy"
+            //     }
+            // }   
         }  
     }
 }
