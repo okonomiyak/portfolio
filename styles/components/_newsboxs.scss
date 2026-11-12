@@ -1,22 +1,13 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 
-#newsboxs {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    max-width: 980px;
-    margin: 60px auto 0;
-
-}
-
 .newsbox {
     display: flex;
     flex-direction: column;
     overflow: hidden;                       // 画像を角丸の中に収める
     padding: 28px 24px;                     // 画像なしのカードの余白
     border-radius: 24px;
-    background-color: #f5f5f7;
+    background-color: $Sbg;
     color: $text;
     text-decoration: none;
     font-size: fluid(17px, 21px, 320px, 768px);
@@ -62,13 +53,13 @@
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, .10);
+        box-shadow: 0 12px 32px rgba($shadow, .10);
 
         img { transform: scale(1.04); }     // 画像だけ、ゆっくり拡大
     }
 
     &:focus-visible {
-        outline: 2px solid #0071e3;
+        outline: 2px solid $accent;
         outline-offset: 3px;
     }
 

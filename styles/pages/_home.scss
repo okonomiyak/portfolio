@@ -18,22 +18,23 @@
     }
     #Fhome {
         box-sizing: border-box;
-        min-height: calc(100vh - 48px - 60px);   /* 古いブラウザ用 */
-        min-height: calc(100svh - 48px - 60px);  /* 48px はナビ、60px は次の帯を見せる分。dvh だとアドレスバーの収縮でスクロール中に伸びるため svh を使う */
+        min-height: calc(100vh - #{$nav-h} - 60px);   /* 古いブラウザ用 */
+        min-height: calc(100svh - #{$nav-h} - 60px);  /* 60px は次の帯を見せる分。dvh だとアドレスバーの収縮でスクロール中に伸びるため svh を使う */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;          /* 最初の要素を上、最後の要素を下に */
         text-align: center;
         gap: 6px;
-        padding: clamp(48px, 12vh, 140px) 0 clamp(80px, 16vh, 200px);
+        padding: clamp(48px, 12vh, 140px) 16px clamp(80px, 16vh, 200px);
 
         .button {
             display: flex;
+            flex-wrap: wrap;            // 狭い画面では折り返す
             justify-content: center;
             gap: 10px;
             font-size: medium;
-            padding: 60px 0;
+            margin-top: 48px;
         }
         img {
             // 100% だとスマホでは画面幅いっぱいまで広がって大きすぎるため、
@@ -46,7 +47,7 @@
         box-sizing: border-box;
         min-height: calc(100vh - #{$nav-h});    // 古いブラウザ用
         min-height: calc(100svh - #{$nav-h});   // dvh だとスクロール中にアドレスバーが収縮して伸びるため svh を使う
-        padding: 30px;
+        padding: 80px 0;            // 横はスライドの margin(10%) に任せる
         background-color: $text;
         color: $bg;
         text-align: center;
@@ -62,11 +63,15 @@
         > h1 {
             margin: 0;
             font-size: fluid(36px, 64px, 320px, 768px);
-            background: linear-gradient(90deg, #eef4ff 0%, #ffe3c7 45%, #ffa95e 100%);
+            background: linear-gradient(90deg, $glow-start 0%, $glow-mid 45%, $glow-end 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+    }
+    .news {
+        padding: 0 0 96px;          // 上は .about の padding がある
+        > h1 { margin-bottom: 40px; }
     }
 }
 

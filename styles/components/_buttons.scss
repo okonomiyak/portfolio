@@ -1,21 +1,26 @@
 @use "../abstracts/variables" as *;
 
+.bluebutton, .whitebutton {
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color .2s, color .2s;
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 3px;
+    }
+}
+
 .bluebutton {
     background-color: $accent;
     color: $bg;
-    text-decoration: none;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 20px;
+    &:hover { background-color: $accent-hover; }
 }
 
 .whitebutton {
     color: $accent;
-    text-decoration: none;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    &:hover { text-decoration: underline; }
 }
 
     // パンくず(Stack / 言語名 / 作品名)

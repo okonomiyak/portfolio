@@ -10,10 +10,10 @@
   font-size: larger;
   padding: 10px;
   border-bottom: 2px solid $border;
-  background: rgb(255 255 255 / 0.72);              /* 半透明の白 */
+  background: rgba($bg, .72);              /* 半透明の白 */
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);        /* 背面をぼかす */
-  border-bottom: 1px solid rgb(0 0 0 / 0.1);         /* 細い下線 */
+  border-bottom: 1px solid rgba($shadow, .1);         /* 細い下線 */
   font-family: $font-English;
   padding-left: 20%;
 

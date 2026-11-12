@@ -5,8 +5,17 @@ $textbg: #0d0d0d;
 $navbarbg: #EEEEEE;
 $buttonbg: #64616180;
 $accent: #0071e3;
+$accent-hover: #0077ed;   // ボタンに乗せたとき
+$link: #0066cc;           // 本文中のリンク
 $border: #CCCCCC;
+$divider: #d2d2d7;        // 表の区切り線
 $subtext: #646161;
+$shadow: #000000;         // 影・薄い線の元の色。rgba($shadow, .1) のように透明度をつけて使う
+
+// #Shome 見出しのグラデーション
+$glow-start: #eef4ff;
+$glow-mid: #ffe3c7;
+$glow-end: #ffa95e;
 
 
 $nav-h: 48px;   // ナビの高さ

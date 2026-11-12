@@ -9,13 +9,14 @@
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    margin-bottom: 50px;   // ドットとの間隔
+    padding: 8px 0 50px;   // overflow で切れないよう、影の分の余白を中に取る(下はドットとの間隔も兼ねる)
 
     &::-webkit-scrollbar {
       display: none;   // 古いSafari・Chrome向け
     }
 
     > .slide {
+      box-sizing: border-box;   // padding 込みで 80% にして、1枚 = 画面1枚分にそろえる
       flex: 0 0 80%;
       scroll-snap-align: center;
       margin: 0 10%;

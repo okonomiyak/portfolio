@@ -77,9 +77,11 @@ pub fn Home() -> Element {
                     }
                 }   
             }
-            h1 {"ニュース"}
-            NewsBoxs {
-                limit:2,
+            section { class: "news",
+                h1 {"ニュース"}
+                NewsBoxs {
+                    limit:2,
+                }
             }
         }
     }
