@@ -19,7 +19,7 @@ pub fn Home() -> Element {
                         h1 { "いわのポートフォリオ" }
                         h2 { "Rustでいろいろ開発する 高専生2年生"}
                         h2 { "他にも Unity(C#) Java Python などもやってます"}
-                        img{ src: asset!("assets/img/hero-glow.webp"),alt:"hero"}
+                        //img{ src: asset!("assets/img/hero-glow.webp"),alt:"hero"}
                     }
 
                     div {
@@ -83,7 +83,5 @@ pub fn Home() -> Element {
                     }
             }   }
         }
-        
-        Footer {}
     }
 }
