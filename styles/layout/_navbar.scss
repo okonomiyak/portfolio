@@ -10,7 +10,7 @@
   font-size: larger;
   padding: 10px;
   border-bottom: 2px solid $border;
-  background: rgba($bg, .72);              /* 半透明の白 */
+  background: color-mix(in srgb, #{$bg} 72%, transparent);   /* 半透明の背景色 */
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);        /* 背面をぼかす */
   border-bottom: 1px solid rgba($shadow, .1);         /* 細い下線 */

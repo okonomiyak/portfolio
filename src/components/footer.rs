@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::data::MAIN_CSS;
+
 
 const GITHUBICON:Asset = asset!("assets/img/use/github.svg");
 const MAIL:Asset = asset!("assets/img/mail.svg");
@@ -8,7 +8,6 @@ const MAIL:Asset = asset!("assets/img/mail.svg");
 #[component]
 pub fn Footer() -> Element {
     rsx!{
-        document::Stylesheet { href: MAIN_CSS }
         div {
             id: "footer",
             nav {

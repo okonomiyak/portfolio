@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::data::MAIN_CSS;
+
 use crate::{Route, data::NEWS};
 use crate::components::Carousel;
 
@@ -9,7 +9,6 @@ pub fn NewsBoxs(limit: usize) -> Element {
     let count = items.len();
 
     rsx! {
-        document::Stylesheet { href: MAIN_CSS }
         Carousel { id: "news", count,
             for item in items {
                 Link {

@@ -1,10 +1,9 @@
 use dioxus::prelude::*;
-use crate::{Route, data::MAIN_CSS};
+use crate::{Route};
 
 #[component]
 pub fn PageNotFound(route: Vec<String>) -> Element {
     rsx!{
-        document::Stylesheet { href: MAIN_CSS }
         document::Meta { name: "robots", content: "noindex" }
         div {
             id:"notfound",

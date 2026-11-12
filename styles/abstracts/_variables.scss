@@ -1,15 +1,49 @@
-$text: #1D1D1F;
-$bg: #FFFFFF;
-$Sbg: #F5F5F7;
-$textbg: #0d0d0d;
-$navbarbg: #EEEEEE;
+// ── テーマで切り替わる色 ──
+// 値は下の $light / $dark に書く。base/_theme.scss が CSS 変数(--text など)として出力し、
+// OS がダークモードなら $dark に切り替わる。
+// 中身は var() なので、rgba($text, .5) のような Sass の色関数は使えない。
+// 透明度が要るときは color-mix(in srgb, #{$bg} 72%, transparent) を使う。
+$light: (
+  text: #1D1D1F,
+  bg: #FFFFFF,
+  Sbg: #F5F5F7,
+  navbarbg: #EEEEEE,
+  link: #0066cc,           // 本文中のリンク
+  border: #CCCCCC,
+  divider: #d2d2d7,        // 表の区切り線
+  subtext: #646161,
+  icon-filter: brightness(0),            // 単色アイコンを黒にする
+);
+$dark: (
+  text: #F5F5F7,
+  bg: #000000,
+  Sbg: #1C1C1E,
+  navbarbg: #2C2C2E,
+  link: #2997ff,
+  border: #424245,
+  divider: #424245,
+  subtext: #A1A1A6,
+  icon-filter: brightness(0) invert(1),  // 単色アイコンを白にする
+);
+
+$text: var(--text);
+$bg: var(--bg);
+$Sbg: var(--Sbg);
+$navbarbg: var(--navbarbg);
+$link: var(--link);
+$border: var(--border);
+$divider: var(--divider);
+$subtext: var(--subtext);
+$icon-filter: var(--icon-filter);
+
+// ── テーマによらない色 ──
+$textbg: #0d0d0d;         // Cworks のスライド(どちらのテーマでも暗いカード)
+$band: #1D1D1F;           // #Shome の暗い帯
+$on-dark: #FFFFFF;        // 暗い面・青い面の上の文字
+$on-dark-sub: #CCCCCC;    // 暗い面の上の補足テキスト
 $buttonbg: #64616180;
 $accent: #0071e3;
 $accent-hover: #0077ed;   // ボタンに乗せたとき
-$link: #0066cc;           // 本文中のリンク
-$border: #CCCCCC;
-$divider: #d2d2d7;        // 表の区切り線
-$subtext: #646161;
 $shadow: #000000;         // 影・薄い線の元の色。rgba($shadow, .1) のように透明度をつけて使う
 
 // #Shome 見出しのグラデーション
@@ -21,5 +55,5 @@ $glow-end: #ffa95e;
 $nav-h: 48px;   // ナビの高さ
 
 
-$font-English: "JetBrainsMono", monospace;
-$font-main: "Zen Kaku Gothic New", sans-serif;
+$font-English: "JetBrains Mono", monospace;   // Google Fonts のファミリー名(スペースあり)と一致させる
+$font-main: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;

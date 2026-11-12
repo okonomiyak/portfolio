@@ -44,7 +44,7 @@
                 margin-left: 10px;
                 width: 22px;
                 height: 22px;
-                filter: brightness(0);     // 白いアイコンを黒にする
+                filter: $icon-filter;     // テーマに合わせて黒/白一色にする
                 opacity: .8;
                 transition: opacity .2s;
             }

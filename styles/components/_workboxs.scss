@@ -23,7 +23,7 @@
             height: fluid(48px, 64px, 320px, 768px);
             object-fit: contain;
             opacity: 0.85;
-            filter: brightness(0);        // 黒一色にする
+            filter: $icon-filter;     // テーマに合わせて黒/白一色にする
             transition: opacity 0.2s, transform 0.2s;
         }
 
@@ -44,7 +44,7 @@
             height: fluid(48px, 64px, 320px, 768px);
             object-fit: contain;
             opacity: 0.85;
-            filter: brightness(0);        // 黒一色にする
+            filter: $icon-filter;     // テーマに合わせて黒/白一色にする
             transition: opacity 0.2s, transform 0.2s;
         }
 

@@ -1,12 +1,11 @@
 use dioxus::{prelude::*};
 
-use crate::{Route, data::{MAIN_CSS, Stack}};
+use crate::{Route, data::Stack};
 
 /// Home page
 #[component]
 pub fn WorkDetail(lan: Stack) -> Element {
     rsx! {
-        document::Stylesheet { href: MAIN_CSS }
         div {
             id:"Detail",
             nav { class: "crumbs",

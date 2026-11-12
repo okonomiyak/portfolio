@@ -48,8 +48,8 @@
         min-height: calc(100vh - #{$nav-h});    // 古いブラウザ用
         min-height: calc(100svh - #{$nav-h});   // dvh だとスクロール中にアドレスバーが収縮して伸びるため svh を使う
         padding: 80px 0;            // 横はスライドの margin(10%) に任せる
-        background-color: $text;
-        color: $bg;
+        background-color: $band;
+        color: $on-dark;
         text-align: center;
 
         // 縦の真ん中に寄せる

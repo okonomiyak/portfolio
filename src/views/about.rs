@@ -1,11 +1,10 @@
 use dioxus::prelude::*;
 
-use crate::data::MAIN_CSS;
+
 
 #[component]
 pub fn About() -> Element {
     rsx! {
-        document::Stylesheet { href: MAIN_CSS }
         div {
             id: "about", class: "about",
             div { class: "inner",

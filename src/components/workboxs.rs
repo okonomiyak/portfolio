@@ -1,12 +1,11 @@
 use dioxus::prelude::*;
-use crate::{Route, Stack, data::MAIN_CSS};
+use crate::{Route, Stack};
 
 
 // to_vec()で配列からVecに
 #[component]
 pub fn WorkBoxs(items: Vec<Stack>,on_link: bool) -> Element{
     rsx!{
-        document::Stylesheet { href: MAIN_CSS }
         div {
             class:"workboxs",
             for item in items{

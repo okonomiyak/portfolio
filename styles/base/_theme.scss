@@ -1,0 +1,17 @@
+@use "../abstracts/variables" as *;
+
+// abstracts/_variables.scss の $light / $dark を CSS 変数にする
+:root {
+  color-scheme: light dark;   // スクロールバーやフォーム部品もテーマに合わせる
+  @each $name, $value in $light {
+    --#{$name}: #{$value};
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @each $name, $value in $dark {
+      --#{$name}: #{$value};
+    }
+  }
+}

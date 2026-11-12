@@ -1,11 +1,10 @@
 use dioxus::prelude::*;
-use crate::{Route, components::Footer, data::MAIN_CSS};
+use crate::{Route, components::Footer};
 
 /// Shared navbar component.
 #[component]
 pub fn Navbar() -> Element {
     rsx! {
-        document::Stylesheet { href: MAIN_CSS }
         nav { class: "navbar",
             Link { class: "logo", to: Route::Home {}, "Iwasite" }
             div { class: "links",

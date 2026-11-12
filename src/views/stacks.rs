@@ -1,12 +1,11 @@
 use dioxus::{prelude::*};
 
-use crate::{components::WorkBoxs, data::{MAIN_CSS, Stack}};
+use crate::{components::WorkBoxs, data::Stack};
 
 /// Home page
 #[component]
 pub fn Stacks() -> Element {
     rsx! {
-        document::Stylesheet { href: MAIN_CSS }
         div {
             id:"Skills",
             div {

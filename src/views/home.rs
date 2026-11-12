@@ -2,13 +2,12 @@ use dioxus::prelude::*;
 
 use crate::Route;
 use crate::components::{Cworks, NewsBoxs};
-use crate::data::MAIN_CSS;
+
 
 /// Home page
 #[component]
 pub fn Home() -> Element {
     rsx! {
-        document::Stylesheet { href: MAIN_CSS }
         div {
             class:"home",
             section {
