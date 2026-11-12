@@ -77,8 +77,9 @@ pub fn Home() -> Element {
                     }
                 }   
             }
+            h1 {"ニュース"}
             NewsBoxs {
-                limitnews:2,
+                limit:2,
             }
         }
     }

@@ -6,7 +6,8 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px;
     max-width: 980px;
-    margin: 40px auto 0;
+    margin: 60px auto 0;
+
 }
 
 .newsbox {
@@ -38,8 +39,11 @@
 
     // 画像なしのカードは、高さをそろえる
     &:not(:has(img)) {
-        min-height: 140px;
-        justify-content: flex-end;
+        min-height: 280px;
+        padding: 32px 28px;
+        justify-content: flex-end;          // 文字は下に置く(Apple のカードの置き方)
+        font-size: fluid(20px, 28px, 320px, 768px);
+        line-height: 1.3;
     }
 
     &:hover {

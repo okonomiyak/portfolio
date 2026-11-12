@@ -42,6 +42,9 @@ impl Projects {
     pub fn find(lan:Stack,slug:&str) -> Option<&'static Projects> {
         PROJECTS.iter().find(|p| p.slug == slug && p.lang.contains(&lan))
     }
+    pub fn find_by_slug(slug:&str) -> Option<&'static Projects>  {
+       PROJECTS.iter().find(|p| p.slug == slug )
+    }
 }
 
 impl News {
@@ -53,8 +56,8 @@ impl News {
         let slug = self.projectslug;
         PROJECTS.iter().filter(move | p | slug.contains(&p.slug))
     }
-    pub fn find(slug:&str) -> Option<&'static Projects> {
-        PROJECTS.iter().find(|p| p.slug == slug)
+    pub fn find(slug:&str) -> Option<&'static News> {
+        NEWS.iter().find(|p| p.slug == slug)
     }
 }
 

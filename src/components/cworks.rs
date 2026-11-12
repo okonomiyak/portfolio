@@ -1,42 +1,20 @@
 use dioxus::prelude::*;
-use crate::components::scroll_to_child;
+use crate::{Route, Stack, components::Carousel, data::MAIN_CSS};
 
 #[component]
-pub fn Carousel(
-    #[props(into)] id: String,   // ページ内で重複しない名前
-    count: usize,                // スライドの枚数
-    children: Element,           // スライド本体
-) -> Element {
-    let mut current = use_signal(|| 0usize);
-    let track = format!("{id}-track");
-
+pub fn Cworks() -> Element {
     rsx! {
-        div { id: "{id}", class: "carousel",
-            div {
-                id: "{track}",
-                class: "slider",
-                onscroll: move |e| {
-                    let total = e.scroll_width() as f64;
-                    if total <= 0.0 || count == 0 {
-                        return;
-                    }
-                    let i = (e.scroll_left() as f64 / total * count as f64).round() as usize;
-                    let i = i.min(count - 1);
-                    if i != current() {
-                        current.set(i);
-                    }
-                },
-                {children}
-            }
-            div { class: "buttons",
-                for i in 0..count {
-                    button {
-                        key: "{i}",
-                        onclick: {
-                            let track = track.clone();
-                            move |_| scroll_to_child(&track, i)
-                        },
-                        { if i == current() { "●" } else { "○" } }
+        document::Stylesheet { href: MAIN_CSS }
+        div { id: "cworks",
+            Carousel { id: "langs", count: Stack::LANGS.len(),
+                for lan in Stack::LANGS {
+                    Link {
+                        key: "{lan}",
+                        class: "slide",
+                        to: Route::WorkDetail { lan },
+                        h1 { "{lan.name()}" }
+                        p { "{lan.desc()}" }
+                        img { src: lan.img(), alt: "{lan.name()}" }
                     }
                 }
             }

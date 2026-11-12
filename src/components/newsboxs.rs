@@ -1,21 +1,23 @@
 use dioxus::prelude::*;
-
-use crate::{Route, data::{MAIN_CSS, NEWS}};
+use crate::data::MAIN_CSS;
+use crate::{Route, data::NEWS};
+use crate::components::Carousel;
 
 #[component]
-pub fn NewsBoxs(limitnews: usize) -> Element {
-    let limit = limitnews.min(NEWS.len());
+pub fn NewsBoxs(limit: usize) -> Element {
+    let items: Vec<_> = NEWS.iter().take(limit).collect();
+    let count = items.len();
 
     rsx! {
         document::Stylesheet { href: MAIN_CSS }
-        div {
-            id: "newsboxs",
-            for item in NEWS.iter().take(limit) {
+        Carousel { id: "news", count,
+            for item in items {
                 Link {
-                    class: "newsbox",
-                    to: Route::NewsDetail {slug: item.slug.to_string()},
-                    if let Some(imgs) = item.img {
-                        img { src: imgs, alt: "..." }
+                    key: "{item.slug}",
+                    class: "slide newsbox",
+                    to: Route::NewsDetail { slug: item.slug.to_string() },
+                    if let Some(pic) = item.img {
+                        img { src: pic, alt: "{item.title}" }
                     }
                     "{item.title}"
                 }

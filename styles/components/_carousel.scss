@@ -1,0 +1,47 @@
+@use "../abstracts/variables" as *;
+
+.carousel {
+  width: 100%;   // align-items: center で縮まないように
+
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-bottom: 50px;   // ドットとの間隔
+
+    &::-webkit-scrollbar {
+      display: none;   // 古いSafari・Chrome向け
+    }
+
+    > .slide {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+      margin: 0 10%;
+    }
+  }
+
+  // ドット
+  .buttons {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 20px;
+    background-color: $buttonbg;
+    line-height: 1;
+
+    button {
+      padding: 0 3px;
+      border: none;
+      background: none;
+      color: $bg;
+      font: inherit;
+      font-size: 1rem;
+      line-height: 1;   // font: inherit の「後」に書く
+      cursor: pointer;
+    }
+  }
+}

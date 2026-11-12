@@ -1,12 +1,49 @@
 use dioxus::prelude::*;
-use crate::{Route, data::{MAIN_CSS, News}, views::PageNotFound};
+use crate::{Route, data::{News,Projects}, views::PageNotFound};
 
 #[component]
-pub fn NewsDetail(slug:String) -> Element {
+pub fn NewsDetail(slug: String) -> Element {
     let Some(p) = News::find(&slug) else {
-        return rsx! { PageNotFound { route: vec![] } };   // return と ; が必要
+        return rsx! { PageNotFound { route: vec!["news".into(), slug] } };
     };
-    rsx!{
-        document::Stylesheet { href: MAIN_CSS }
+    let related: Vec<_> = p 
+        .projectslug.iter()
+        .filter_map(|s| {
+            let proj = Projects::find_by_slug(s)?;
+            let lan = *proj.lang.first()?;
+            Some((lan,proj))
+        }
+    ).collect();
+
+    rsx! {
+        document::Title { "{p.title} | Iwasite" }
+        article { id: "Detail",
+            nav { class: "crumbs",
+                Link { to: Route::Home {}, "Home" }
+                " / {p.title}"
+            }
+            h1 { "{p.title}" }
+            if !related.is_empty() {
+                div {
+                    class:"projects",
+                    h2 { "関連する作品" }
+                    ul {
+                        for (lan, proj) in related {
+                            li { key: "{proj.slug}",
+                                Link {
+                                    to: Route::ProjectDetail { lan, slug: proj.slug.to_string() },
+                                    "{proj.title} を見る >"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            p { class: "date", "{p.date}" }
+            if let Some(pic) = p.img {
+                img { src: pic, alt: "{p.title}" }
+            }
+            Link { class: "bluebutton", to: Route::Home {}, "ホームに戻る" }
+        }
     }
 }

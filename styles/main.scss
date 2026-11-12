@@ -7,10 +7,11 @@
 @use "components/workboxs";
 @use "components/notfound";
 @use "components/newsboxs";
+@use "components/carousel";
 @use "layout/navbar";
 @use "layout/footer";
 @use "pages/home";
 @use "pages/projectdetail";
 @use "pages/skills";
-@use "pages/workdetail";
+@use "pages/detail";
 @use "pages/about"

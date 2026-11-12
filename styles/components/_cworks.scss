@@ -1,79 +1,42 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 
-// スライダー部品
 #cworks {
-  width: 100%;                          // align-items: center で縮まないように
-
-  .slider {
+  .slide {
     display: flex;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    margin-bottom: 50px;                // ドットとの間隔
-    
-    .slide {
-      flex: 0 0 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;                // 中身の間隔を、ここで統一
-      scroll-snap-align: center;
-      margin: 0 10%;
-      padding: 80px 24px;       // 横の余白がないとテキストが端まで伸びて折り返しが崩れる
-      background-color: $textbg;
-      border-radius: 24px;
-      text-decoration: none;
-      box-shadow:
-        0 0 0 2px rgb(255 255 255 / 0.08),   // 細い境界線(影で作る)
-        0 24px 48px rgb(0 0 0 / 0.5);
-
-      h1 {
-        margin: 0;
-        font-size: fluid(32px, 64px, 320px, 768px);
-        color: $bg;
-        word-break: auto-phrase;
-        text-wrap: pretty;
-      }
-      p {
-        margin: 0;
-        font-size: fluid(17px, 32px, 320px, 768px);
-        color: $border;
-        word-break: auto-phrase;
-        text-wrap: pretty;
-      }
-      img {
-        // 固定 200px だとスマホの狭いカード幅に対して大きすぎるため、画面幅に応じて縮める
-        width: fluid(110px, 200px, 320px, 768px);
-        height: fluid(110px, 200px, 320px, 768px);
-        max-width: 100%;
-        margin: 8px 0 0;
-        filter: brightness(0) invert(1);     // 白一色にする
-      }
-    }
-  }
-
-  // ドット
-  .buttons {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    width: fit-content;
-    margin: 0 auto;
-    padding: 12px;
-    border-radius: 20px;
-    background-color: $buttonbg;
-    line-height: 1;
+    gap: 16px;   // 中身の間隔を、ここで統一
+    padding: 80px 24px;   // 横の余白がないと、テキストが端まで伸びる
+    background-color: $textbg;
+    border-radius: 24px;
+    text-decoration: none;
+    box-shadow:
+      0 0 0 2px rgb(255 255 255 / 0.08),   // 細い境界線(影で作る)
+      0 24px 48px rgb(0 0 0 / 0.5);
 
-    button {
-      padding: 0 3px;
-      border: none;
-      background: none;
+    h1 {
+      margin: 0;
+      font-size: fluid(32px, 64px, 320px, 768px);
       color: $bg;
-      font: inherit;
-      font-size: 1rem;
-      line-height: 1;                        // font: inherit の「後」に書く
-      cursor: pointer;
+      word-break: auto-phrase;
+      text-wrap: pretty;
+    }
+
+    p {
+      margin: 0;
+      font-size: fluid(17px, 32px, 320px, 768px);
+      color: $border;
+      word-break: auto-phrase;
+      text-wrap: pretty;
+    }
+
+    img {
+      width: fluid(110px, 200px, 320px, 768px);
+      height: fluid(110px, 200px, 320px, 768px);
+      max-width: 100%;
+      margin: 8px 0 0;
+      filter: brightness(0) invert(1);   // 白一色にする
     }
   }
 }

@@ -4,10 +4,13 @@ mod cworks;
 mod workboxs;
 mod scroll_to;
 mod newsboxs;
+mod carousel;
 
 pub use navbar::Navbar;
 pub use footer::Footer;
 pub use cworks::Cworks;
 pub use workboxs::WorkBoxs;
-pub use scroll_to::Scroll_to;
+pub use scroll_to::scroll_to;
+pub use scroll_to::scroll_to_child;
 pub use newsboxs::NewsBoxs;
+pub use carousel::Carousel;

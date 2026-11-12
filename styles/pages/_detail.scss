@@ -1,7 +1,7 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/functions" as *;
 
-#WorkDetail {
+#Detail {
   max-width: 1000px;
   margin: 0 auto;
   padding: 48px 16px 96px;
@@ -40,6 +40,7 @@
     background-color: #f5f5f7;
     text-align: left;
     transition: transform 0.25s, box-shadow 0.25s;
+    
 
     h2 {
       margin: 0;
@@ -82,7 +83,76 @@
       }
     }
   }
+  .projects {
+    margin-top: 64px;
 
+    h2 {
+        margin: 0 0 16px;
+        font-size: fluid(22px, 32px, 320px, 768px);
+        font-weight: 600;
+        letter-spacing: -.015em;
+    }
+
+    // ProjectDetail の ul(タグの丸いボタン用)の指定を、打ち消す
+    ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        padding: 0;
+        border-radius: 0;
+        background: none;
+        border-top: 1px solid $border;
+
+        &:last-child { border-bottom: 1px solid $border; }
+    }
+
+    a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 0;
+        color: $text;
+        font-size: fluid(17px, 22px, 320px, 768px);
+        font-weight: 500;
+        text-decoration: none;
+        transition: color .2s;
+
+        &::after {                      // 右端の矢印
+            content: "›";
+            flex: none;
+            color: $subtext;
+            font-size: 1.4em;
+            line-height: 1;
+            transition: transform .25s cubic-bezier(.25, .1, .25, 1),
+                        color .2s;
+        }
+
+        &:hover {
+            color: #0066cc;
+
+            &::after {
+                color: #0066cc;
+                transform: translateX(4px);
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid #0071e3;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        a, a::after { transition: none; }
+        a:hover::after { transform: none; }
+    }
+  }
   @media (hover: hover) {
     .box:hover {
       transform: translateY(-4px);
