@@ -133,7 +133,7 @@ pub const PROJECTS: &[Projects] = &[
         desc: "タスクの管理discordbot Web付き",
         body: "Discordからタスクを管理できるbotです。Webからも見られるようにしています。",
         url: "https://github.com/okonomiyak/discord_task_bot",
-        img: None,
+        img: Some(asset!("assets/img/og.webp")),
         lang: &[Stack::Rust],
     },
     Projects {
@@ -187,7 +187,7 @@ pub const PROJECTS: &[Projects] = &[
         desc: "高専祭用ゲーム(unity) ランキング付き(rust/api)",
         body: "高専祭向けに作った、ブラウザで遊べるUnityのゲームです。ランキングは、Rust製のAPIで管理しています。",
         url: "https://race.iwa.me.uk",
-        img: None,
+        img: Some(asset!("assets/img/screenshot-annotated.png")),
         lang: &[Stack::Unity, Stack::Rust],
     },
     Projects {
@@ -207,5 +207,14 @@ pub const PROJECTS: &[Projects] = &[
         url: "https://github.com/okonomiyak/minecraft-vote-kubejs",
         img: None,
         lang: &[Stack::Javascript],
+    },
+    Projects {
+        slug: "lc7981",
+        title: "lc7981(ディスプレイ)",
+        desc: "lc7981をArudinoで動かすコード",
+        body: "Arduinoでlc7981のディスプレイを制御するコードです。",
+        url: "https://github.com/okonomiyak/lc7981-board",
+        img: Some(asset!("assets/img/IMG_20261107_0217352.webp")),
+        lang: &[Stack::Arduino],
     },
 ];
