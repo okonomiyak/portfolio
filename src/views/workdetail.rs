@@ -8,7 +8,7 @@ pub fn WorkDetail(lan: Stack) -> Element {
     rsx! {
         document::Stylesheet { href: MAIN_CSS }
         div {
-            id:"WorkDetail",
+            id:"Detail",
             nav { class: "crumbs",
                 Link { to: Route::Stacks {}, "Stack" }
                 " / "

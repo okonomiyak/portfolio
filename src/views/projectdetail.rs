@@ -9,7 +9,7 @@ pub fn ProjectDetail(lan:Stack,slug:String) -> Element {
     };
     rsx! {
         document::Title { "{p.title} | Iwasite" }
-        article { id: "Detail",
+        article { id: "ProjectDetail",
             nav { class: "crumbs",
                 Link { to: Route::Stacks {}, "Stack" }
                 " / "
