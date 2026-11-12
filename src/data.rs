@@ -17,6 +17,7 @@ pub struct News {
     pub slug: &'static str,
     pub title: &'static str,
     pub desc: &'static str,
+    pub body: &'static str,
     pub date: &'static str,
     pub img: Option<Asset>,
     pub projectslug: &'static [&'static str],
@@ -252,8 +253,12 @@ pub const NEWS: &[News] = &[
     News {
         slug: "kousen2026",
         title: "高専祭(2026)",
-        desc:"2026年高専祭 私はレースゲームを作成しました。",
-        date:"2026-11-07",
+        desc: "高専祭の出し物として、スマホで遊べるドローンレースゲーム「キャンパス・スカイアタック」を公開しました。",
+        body: "2026年の高専祭で、スマホのブラウザからすぐ遊べるミニゲーム「キャンパス・スカイアタック」を出しました。\n\n\
+               遊び方は、ドローンを操縦して、学校のコースを3周し、タイムを競うタイムアタックです。コースの背景は、学校の案内図をもとに、自分で描き起こした真上からのキャンパスマップです。\n\n\
+               ゲームは Unity(2D、真上視点)で作り、WebGL として書き出して、ウェブサイトに埋め込みました。操作は、スマホの傾きではなく、画面のドラッグとボタンです。埋め込んだ画面の中では、傾きのセンサーの許可が通りにくいため、この方式に変えました。\n\n\
+               Unity から使うAPIは、Rust で自作しました。サーバーは自宅サーバーで動かしています。",
+        date: "2026-11-07",
         img: None,
         projectslug: &["campus-sky-attack"],
     }

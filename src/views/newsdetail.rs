@@ -23,6 +23,7 @@ pub fn NewsDetail(slug: String) -> Element {
                 " / {p.title}"
             }
             h1 { "{p.title}" }
+            p {"{p.body}" }
             if !related.is_empty() {
                 div {
                     class:"projects",

@@ -19,7 +19,8 @@ pub fn NewsBoxs(limit: usize) -> Element {
                     if let Some(pic) = item.img {
                         img { src: pic, alt: "{item.title}" }
                     }
-                    "{item.title}"
+                    h3{"{item.title}"}
+                    p{"{item.desc}"}
                 }
             }
         }
