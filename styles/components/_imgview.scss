@@ -1,0 +1,49 @@
+@use "../abstracts/variables" as *;
+
+#imgview {
+    container-type: inline-size;
+    --shot-w: min(100cqw, 720px);           // 1枚の枠の幅:最大720px
+    margin-block: 40px;
+
+    .slider {
+        width: var(--shot-w);               // 見える範囲=1枚の幅。横の画像は、はみ出して隠れる
+        margin: 0 auto -60px;               // 中央に置く / 下は、ドットとの間を詰める
+        padding: 0 0 72px;                  // 下だけ、影の分の余白
+        gap: 16px;
+        scroll-padding-inline: 0;
+        align-items: center;
+    }
+
+    img {
+        flex: 0 0 100%;                     // スライダーの幅いっぱい=枠の幅
+        align-self: center;
+        width: 100%;
+        height: auto;
+        max-width: none;
+        margin: 0;
+        scroll-snap-align: center;
+
+        box-sizing: border-box;
+        padding: clamp(12px, 3cqw, 32px);   // 画像の周りの余白
+        aspect-ratio: 16 / 10;
+        object-fit: scale-down;             // 大きければ縮小、小さければそのまま
+        object-position: center;
+        background-color: $Sbg;             // 余った部分は、この色で補完
+        border-radius: 24px;
+        // 横に広がる影は、スライダーの端で切れるので、下にだけ出す
+        box-shadow: 0 12px 24px -12px rgba($shadow, .22);
+
+        -webkit-user-drag: none;
+        user-select: none;
+    }
+}
+// 詳細ページの中だけ:左寄せにする
+#ProjectDetail #imgview .slider {
+    margin-inline: 0 auto;                  // 左は0、右は自動(下の余白の指定は変えない)
+}
+#ProjectDetail #imgview .buttons {
+    width: fit-content;
+    margin-left: calc(var(--shot-w) / 2);   // 左端を、枠の中央に置く
+    margin-right: 0;
+    transform: translateX(-50%);            // 自分の幅の半分だけ戻して、真ん中にそろえる
+}

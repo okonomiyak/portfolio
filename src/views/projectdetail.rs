@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::{Route, data::{Projects, Stack}, views::PageNotFound};
+use crate::{Route, components::ImgView, data::{Projects, Stack}, views::PageNotFound};
 
 #[component]
 pub fn ProjectDetail(lan:Stack,slug:String) -> Element {
@@ -17,9 +17,7 @@ pub fn ProjectDetail(lan:Stack,slug:String) -> Element {
                 " / {p.title}"
             }
             h1 { "{p.title}" }
-            if let Some(pic) = p.img {
-                img { src: pic, alt: "{p.title}" }
-            }
+            ImgView {imgs: p.img.to_vec() }
             p { "{p.body}" }
             h2 { "使った技術" }
             ul {

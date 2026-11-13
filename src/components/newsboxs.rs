@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 use crate::{Route, data::NEWS};
-use crate::components::Carousel;
+use crate::components::{Carousel, ImgView};
 
 #[component]
 pub fn NewsBoxs(limit: usize) -> Element {
@@ -15,9 +15,7 @@ pub fn NewsBoxs(limit: usize) -> Element {
                     key: "{item.slug}",
                     class: "slide newsbox",
                     to: Route::NewsDetail { slug: item.slug.to_string() },
-                    if let Some(pic) = item.img {
-                        img { src: pic, alt: "{item.title}" }
-                    }
+                    ImgView {imgs: item.img.to_vec()}
                     h3{"{item.title}"}
                     p{"{item.desc}"}
                 }

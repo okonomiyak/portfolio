@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::{Route, data::{News,Projects}, views::PageNotFound};
+use crate::{Route, components::ImgView, data::{News,Projects}, views::PageNotFound};
 
 #[component]
 pub fn NewsDetail(slug: String) -> Element {
@@ -41,9 +41,7 @@ pub fn NewsDetail(slug: String) -> Element {
                 }
             }
             p { class: "date", "{p.date}" }
-            if let Some(pic) = p.img {
-                img { src: pic, alt: "{p.title}" }
-            }
+            ImgView {imgs: p.img.to_vec() }
             Link { class: "bluebutton", to: Route::Home {}, "ホームに戻る" }
         }
     }

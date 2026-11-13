@@ -5,6 +5,7 @@ mod workboxs;
 mod scroll_to;
 mod newsboxs;
 mod carousel;
+mod imgview;
 
 pub use navbar::Navbar;
 pub use footer::Footer;
@@ -14,3 +15,4 @@ pub use scroll_to::scroll_to;
 pub use scroll_to::scroll_to_child;
 pub use newsboxs::NewsBoxs;
 pub use carousel::Carousel;
+pub use imgview::ImgView;

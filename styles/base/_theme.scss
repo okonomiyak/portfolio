@@ -1,17 +1,26 @@
 @use "../abstracts/variables" as *;
 
-// abstracts/_variables.scss の $light / $dark を CSS 変数にする
-:root {
-  color-scheme: light dark;   // スクロールバーやフォーム部品もテーマに合わせる
-  @each $name, $value in $light {
-    --#{$name}: #{$value};
-  }
+@mixin emit($theme) {
+    @each $name, $value in $theme {
+        --#{$name}: #{$value};
+    }
 }
 
+:root {
+    @include emit($light);
+    color-scheme: light;
+}
+
+// 何も選んでいないとき:OSの設定に従う
 @media (prefers-color-scheme: dark) {
-  :root {
-    @each $name, $value in $dark {
-      --#{$name}: #{$value};
+    :root:not([data-theme="light"]) {
+        @include emit($dark);
+        color-scheme: dark;
     }
-  }
+}
+
+// ボタンで選んだとき
+:root[data-theme="dark"] {
+    @include emit($dark);
+    color-scheme: dark;
 }
