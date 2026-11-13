@@ -166,7 +166,7 @@ pub const PROJECTS: &[Projects] = &[
         desc: "タスクの管理discordbot Web付き",
         body: "Discordからタスクを管理できるbotです。Webからも見られるようにしています。",
         url: "https://github.com/okonomiyak/discord_task_bot",
-        img: &[asset!("assets/img/og.webp")],
+        img: &[asset!("assets/img/projects/og.webp")],
         lang: &[Stack::Rust],
     },
     Projects {
@@ -220,7 +220,7 @@ pub const PROJECTS: &[Projects] = &[
         desc: "高専祭用ゲーム(unity) ランキング付き(rust/api)",
         body: "高専祭向けに作った、ブラウザで遊べるUnityのゲームです。ランキングは、Rust製のAPIで管理しています。",
         url: "https://race.iwa.me.uk",
-        img: &[asset!("assets/img/skyattack.png")],
+        img: &[asset!("assets/img/projects/sky/help.png"),asset!("assets/img/projects/sky/sky-2.png"),asset!("assets/img/projects/sky/sky-3.png"),asset!("assets/img/projects/sky/sky-4.png")],
         lang: &[Stack::Unity, Stack::Rust],
     },
     Projects {
@@ -229,7 +229,7 @@ pub const PROJECTS: &[Projects] = &[
         desc: "MNISTのデータセットを、フルスクラッチのニューラルネットワークで分類するスクリプト",
         body: "MNISTのデータセットを、フルスクラッチで作ったニューラルネットワークで分類するスクリプトです。",
         url: "https://colab.research.google.com/drive/1s8RHL4h316pDuKj6tsQbAZ9ivsv1I5xX?usp=sharing",
-        img: &[asset!("assets/img/pg1/pg1-6-1.png"),asset!("assets/img/pg1/pg1-6-2.png"),asset!("assets/img/pg1/pg1-6-3.png"),asset!("assets/img/pg1/pg1-6-4.png")],
+        img: &[asset!("assets/img/projects/pg1/pg1-6-1.png"),asset!("assets/img/projects/pg1/pg1-6-2.png"),asset!("assets/img/projects/pg1/pg1-6-3.png"),asset!("assets/img/projects/pg1/pg1-6-4.png")],
         lang: &[Stack::Python],
     },
     Projects {
@@ -247,7 +247,7 @@ pub const PROJECTS: &[Projects] = &[
         desc: "lc7981をArudinoで動かすコード",
         body: "Arduinoでlc7981のディスプレイを制御するコードです。",
         url: "https://github.com/okonomiyak/lc7981-board",
-        img: &[asset!("assets/img/IMG_20261107_0217352.webp")],
+        img: &[asset!("assets/img/projects/IMG_20261107_0217352.webp")],
         lang: &[Stack::Arduino],
     },
 ];
