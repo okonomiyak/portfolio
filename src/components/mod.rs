@@ -6,6 +6,7 @@ mod scroll_to;
 mod newsboxs;
 mod carousel;
 mod imgview;
+mod theme_toggle;
 
 pub use navbar::Navbar;
 pub use footer::Footer;
@@ -16,3 +17,4 @@ pub use scroll_to::scroll_to_child;
 pub use newsboxs::NewsBoxs;
 pub use carousel::Carousel;
 pub use imgview::ImgView;
+pub use theme_toggle::ThemeToggle;

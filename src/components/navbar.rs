@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use crate::{Route, components::Footer};
+use crate::{Route, components::{Footer,ThemeToggle}};
 
 /// Shared navbar component.
 #[component]
@@ -11,9 +11,7 @@ pub fn Navbar() -> Element {
                 Link { active_class: "active", to: Route::Home {}, "Home" }
                 Link { active_class: "active", to: Route::About {}, "About" }
                 Link { active_class: "active", to: Route::Stacks {}, "Stack" }
-                button { 
-                    "🌙"
-                }
+                ThemeToggle {}
             }
         }
 

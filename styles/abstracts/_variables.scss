@@ -13,6 +13,9 @@ $light: (
   divider: #d2d2d7,        // 表の区切り線
   subtext: #646161,
   icon-filter: brightness(0),            // 単色アイコンを黒にする
+  // $light の中(ライト:太陽)
+  sun-display: block,
+  moon-display: none,
 );
 $dark: (
   text: #F5F5F7,
@@ -24,6 +27,9 @@ $dark: (
   divider: #424245,
   subtext: #A1A1A6,
   icon-filter: brightness(0) invert(1),  // 単色アイコンを白にする
+  // $dark の中(ダーク:月)
+  sun-display: none,
+  moon-display: block,
 );
 
 $text: var(--text);
