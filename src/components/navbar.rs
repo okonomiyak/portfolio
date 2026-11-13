@@ -6,7 +6,7 @@ use crate::{Route, components::{Footer,ThemeToggle}};
 pub fn Navbar() -> Element {
     rsx! {
         nav { class: "navbar",
-            Link { class: "logo", to: Route::Home {}, "Iwasite" }
+            //Link { class: "logo", to: Route::Home {}, "Iwasite" }
             div { class: "links",
                 Link { active_class: "active", to: Route::Home {}, "Home" }
                 Link { active_class: "active", to: Route::About {}, "About" }
